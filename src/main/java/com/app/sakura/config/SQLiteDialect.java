@@ -1,4 +1,4 @@
-package com.app.sakura.util;
+package com.app.sakura.config;
 
 import java.sql.Types;
 

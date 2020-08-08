@@ -1,0 +1,14 @@
+
+spring:
+  main:
+    web-application-type: none
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+    database-platform: com.app.sakura.config.SQLiteDialect
+  datasource:
+    password:
+    username: root
+    driver-class-name: org.sqlite.JDBC
+    url: jdbc:sqlite:stockapp.db

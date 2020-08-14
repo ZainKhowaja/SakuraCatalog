@@ -5,7 +5,7 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     database-platform: com.app.sakura.config.SQLiteDialect
   datasource:
     password:

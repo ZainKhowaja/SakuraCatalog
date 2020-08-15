@@ -1,40 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<Pane prefHeight="664.0" prefWidth="1288.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.sakura.controller.LoginController">
+<Pane prefHeight="664.0" prefWidth="1288.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.sakura.controller.MainController">
    <children>
       <BorderPane layoutX="20.0" layoutY="16.0" prefHeight="632.0" prefWidth="1249.0" style="-fx-background-color: white;">
-         <center>
-            <Pane prefHeight="490.0" prefWidth="1192.0" BorderPane.alignment="CENTER">
-               <children>
-                  <TextField layoutX="352.0" layoutY="24.0" prefHeight="31.0" prefWidth="229.0" promptText="Enter search text">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </TextField>
-                  <Label alignment="CENTER_RIGHT" layoutX="219.0" layoutY="23.0" prefHeight="39.0" prefWidth="125.0" text="Search">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <ComboBox layoutX="816.0" layoutY="27.0" prefWidth="150.0" />
-                  <Label alignment="CENTER_RIGHT" layoutX="691.0" layoutY="27.0" prefHeight="32.0" prefWidth="125.0" text="Search By : ">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-         </center>
          <top>
             <Pane prefHeight="100.0" prefWidth="1249.0" BorderPane.alignment="CENTER">
                <children>
@@ -71,6 +59,102 @@
          <effect>
             <DropShadow />
          </effect>
+         <center>
+            <TabPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent;" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+              <tabs>
+                <Tab text="Filter Search">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white;">
+                           <children>
+                              <GridPane layoutX="37.0" layoutY="85.0" prefHeight="320.0" prefWidth="312.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="151.20001220703125" minWidth="10.0" prefWidth="115.20001831054688" />
+                                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="216.80000610351559" minWidth="10.0" prefWidth="197.59998168945313" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints maxHeight="129.60001220703126" minHeight="0.0" prefHeight="38.39999694824219" vgrow="SOMETIMES" />
+                                  <RowConstraints maxHeight="268.8" minHeight="10.0" prefHeight="57.400018310546876" vgrow="SOMETIMES" />
+                                  <RowConstraints maxHeight="317.6000244140625" minHeight="10.0" prefHeight="44.59998168945313" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="317.6000244140625" minHeight="10.0" prefHeight="47.800024414062506" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="317.6000244140625" minHeight="10.0" prefHeight="53.39996337890625" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="317.6000244140625" minHeight="10.0" prefHeight="51.00003662109373" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="317.6000244140625" minHeight="10.0" prefHeight="30.40001220703124" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Label alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="100.0" text="Sakura Id" />
+                                    <TextField fx:id="sakuraId" GridPane.columnIndex="1" />
+                                    <Label alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="100.0" text="Reference Id" GridPane.rowIndex="1" />
+                                    <TextField fx:id="refId" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <Label alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="100.0" text="Filter Type" GridPane.rowIndex="2" />
+                                    <ComboBox fx:id="filterType" maxWidth="1.7976931348623157E308" prefHeight="12.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <Label alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="100.0" text="Manufacturer" GridPane.rowIndex="3" />
+                                    <ComboBox fx:id="manufacturer" maxWidth="1.7976931348623157E308" prefHeight="12.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                    <Label alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="100.0" text="Type Details" GridPane.rowIndex="4" />
+                                    <ComboBox fx:id="typeDetails" maxWidth="1.7976931348623157E308" prefHeight="12.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                    <Button fx:id="chooseImage" mnemonicParsing="false" onAction="#openImage" prefHeight="26.0" prefWidth="186.0" text="Choose Image" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
+                                    <Button fx:id="addProduct" mnemonicParsing="false" onAction="#addProduct" prefHeight="26.0" prefWidth="121.0" text="Add Product" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
+                                 </children>
+                              </GridPane>
+                              <Label layoutX="37.0" layoutY="20.0" prefHeight="50.0" prefWidth="310.0" styleClass="lblHeader" text="Product">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="408.0" layoutY="19.0" prefHeight="50.0" prefWidth="310.0" styleClass="lblHeader" text="Product Details">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <GridPane layoutX="407.0" layoutY="84.0" prefHeight="320.0" prefWidth="312.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="151.20001220703125" minWidth="10.0" prefWidth="111.80001831054688" />
+                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="216.80000610351559" minWidth="10.0" prefWidth="199.79998168945315" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints maxHeight="129.60001220703126" minHeight="0.0" prefHeight="38.39999694824219" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="268.8" minHeight="10.0" prefHeight="57.400018310546876" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="317.6000244140625" minHeight="10.0" prefHeight="44.59998168945313" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="317.6000244140625" minHeight="10.0" prefHeight="47.800024414062506" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="317.6000244140625" minHeight="10.0" prefHeight="53.39996337890625" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="317.6000244140625" minHeight="10.0" prefHeight="51.00003662109373" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="317.6000244140625" minHeight="10.0" prefHeight="30.40001220703124" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <Label alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="100.0" text="Height" />
+                                    <Label alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="100.0" text="Outer D" GridPane.rowIndex="1" />
+                                    <Label alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="100.0" text="Inner D" GridPane.rowIndex="2" />
+                                    <Label alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="100.0" text="Contains" GridPane.rowIndex="3" />
+                                    <Label alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="100.0" text="Volumes" GridPane.rowIndex="4" />
+                                    <Label alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="100.0" text="Note" GridPane.rowIndex="5" />
+                                    <Spinner fx:id="innerD" editable="true" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <Spinner fx:id="height" editable="true" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" />
+                                    <Spinner fx:id="volumes" editable="true" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                    <Spinner fx:id="contains" editable="true" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                    <Spinner fx:id="outerD" editable="true" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <Spinner fx:id="note" editable="true" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                 </children>
+                              </GridPane>
+                              <ScrollPane hbarPolicy="NEVER" layoutX="851.0" layoutY="81.0" prefHeight="380.0" prefWidth="378.0" style="-fx-background-color: white;">
+                                 <content>
+                                    <VBox fx:id="imagePanel" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="376.0" prefWidth="375.0" style="-fx-background-color: white;" />
+                                 </content>
+                              </ScrollPane>
+                              <Label layoutX="851.0" layoutY="19.0" prefHeight="50.0" prefWidth="374.0" styleClass="lblHeader" text="Product Images">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children></AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="Dimension">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: yellow;" />
+                  </content>
+                </Tab>
+              </tabs>
+            </TabPane>
+         </center>
       </BorderPane>
    </children>
 </Pane>

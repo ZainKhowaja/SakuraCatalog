@@ -13,24 +13,39 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 @Component
 public class ScreenUtils {
 
 	private static final String VIEW_LOCATION = "/com/app/sakura/view/";
-	
+
 	@Autowired
-    private ConfigurableApplicationContext springContext ;
+	private ConfigurableApplicationContext springContext;
+
+	private double xOffset = 0;
+
+	private double yOffset = 0;
 
 	public void switchScreen(Object node, SakuraScreen screen) {
 		try {
-			FXMLLoader loader = new FXMLLoader(SakuraFilterApplication.class.getResource(VIEW_LOCATION + screen.getScreenName()));
+			FXMLLoader loader = new FXMLLoader(
+					SakuraFilterApplication.class.getResource(VIEW_LOCATION + screen.getScreenName()));
 			loader.setControllerFactory(springContext::getBean);
 			Parent root = loader.load();
 			Stage stage = (Stage) ((Node) node).getScene().getWindow();
+			root.setOnMousePressed((event) -> {
+				xOffset = event.getSceneX();
+				yOffset = event.getSceneY();
+			});
+
+			root.setOnMouseDragged((event) -> {
+				stage.setX(event.getScreenX() - xOffset);
+				stage.setY(event.getScreenY() - yOffset);
+
+			});
 			Scene scene = new Scene(root);
 			scene.setFill(Color.TRANSPARENT);
+			scene.getStylesheets().add(getClass().getClassLoader().getResource("Style.css").toExternalForm());
 			stage.setScene(scene);
 			stage.setResizable(false);
 			stage.centerOnScreen();

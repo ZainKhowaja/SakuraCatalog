@@ -9,7 +9,6 @@ import com.app.sakura.enums.SakuraScreen;
 import com.app.sakura.util.ScreenUtils;
 
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -26,26 +25,22 @@ public class LoginController {
 
 	@FXML
 	private TextField username;
-	
+
 	@FXML
-    private Label logout;
-	
+	private Label logout;
+
 	@Autowired
 	private ScreenUtils screen;
-	
+
 	@FXML
 	void login(ActionEvent event) throws IOException {
 		errorMessage.setText("");
-    	if(username.getText().equals("admin") && password.getText().equals("admin")) {
-    		screen.switchScreen(event.getSource(), SakuraScreen.MAIN_SCREEN);
-    		
-    	}else
-    		errorMessage.setText("Wrong username or password");
+		if (username.getText().equals("admin") && password.getText().equals("admin")) {
+			screen.switchScreen(event.getSource(), SakuraScreen.MAIN_SCREEN);
+
+		} else
+			errorMessage.setText("Wrong username or password");
 	}
-	
-	public void logout(Event event) throws IOException {
-		screen.switchScreen(event.getSource(), SakuraScreen.LOGIN);
-    }
 
 	@FXML
 	void hover(MouseEvent event) {
@@ -55,7 +50,7 @@ public class LoginController {
 			logout.setStyle("-fx-border-color: black; -fx-border-width: 2; -fx-background-color: white;");
 
 	}
-	
+
 	@FXML
 	void exit() {
 		System.exit(0);

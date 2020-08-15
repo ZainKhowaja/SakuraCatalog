@@ -12,10 +12,12 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 @SpringBootApplication
-public class SakuraFilterApplication extends Application{
+public class SakuraFilterApplication extends Application {
 
 	private ConfigurableApplicationContext context;
 	private Parent rootNode;
+	private double xOffset = 0;
+	private double yOffset = 0;
 
 	public void init() throws Exception {
 		context = SpringApplication.run(SakuraFilterApplication.class);
@@ -23,11 +25,23 @@ public class SakuraFilterApplication extends Application{
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/app/sakura/view/Login.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("view/Login.fxml"));
 		loader.setControllerFactory(context::getBean);
 		rootNode = loader.load();
+		rootNode.setOnMousePressed((event) -> {
+			xOffset = event.getSceneX();
+			yOffset = event.getSceneY();
+		});
+		
+		rootNode.setOnMouseDragged((event) -> {
+			primaryStage.setX(event.getScreenX() - xOffset);
+			primaryStage.setY(event.getScreenY() - yOffset);
+
+		});
+		
 		Scene scene = new Scene(rootNode);
 		scene.setFill(Color.TRANSPARENT);
+		scene.getStylesheets().add(getClass().getClassLoader().getResource("Style.css").toExternalForm());
 		primaryStage.setScene(scene);
 		primaryStage.setResizable(false);
 		primaryStage.initStyle(StageStyle.TRANSPARENT);

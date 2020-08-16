@@ -56,4 +56,16 @@ public class ScreenUtils {
 		}
 	}
 
+	public Node getFXMLNode(SakuraScreen screen) throws Exception {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/app/sakura/view/"+screen.getScreenName()));
+			loader.setControllerFactory(springContext::getBean);
+			Node rootNode = loader.load();
+			return rootNode;
+		} catch (Exception e) {
+			System.out.println("Error -> " + screen.getScreenName() + " Not Found !");
+			throw new Exception(screen.getScreenName() + " Not Found !");
+		}
+	}
+
 }

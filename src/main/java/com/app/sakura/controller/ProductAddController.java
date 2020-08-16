@@ -10,7 +10,7 @@ import java.util.ResourceBundle;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Component;
 
 import com.app.sakura.enums.SakuraScreen;
 import com.app.sakura.util.ScreenUtils;
@@ -32,8 +32,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 
-@Controller
-public class MainController {
+@Component
+public class ProductAddController {
 	@FXML
 	private ResourceBundle resources;
 
@@ -43,14 +43,53 @@ public class MainController {
 	@FXML
 	private Label logout;
 
+	@FXML
+	private TextField sakuraId;
+
+	@FXML
+	private TextField refId;
+
+	@FXML
+	private ComboBox<?> filterType;
+
+	@FXML
+	private ComboBox<?> manufacturer;
+
+	@FXML
+	private ComboBox<?> typeDetails;
+
+	@FXML
+	private Button chooseImage;
+
+	@FXML
+	private Button addProduct;
+
+	@FXML
+	private Spinner<Double> innerD;
+
+	@FXML
+	private Spinner<Double> height;
+
+	@FXML
+	private Spinner<Double> volumes;
+
+	@FXML
+	private Spinner<Double> contains;
+
+	@FXML
+	private Spinner<Double> outerD;
+
+	@FXML
+	private Spinner<Double> note;
+
 	@Autowired
 	private ScreenUtils screen;
+
+	@FXML
+	private VBox imagePanel;
 	
 	@FXML
-	private Tab productSearchTab;
-	
-	@FXML
-	private Tab addProductTab;
+	private Tab productSearch;
 	
 	@Autowired
 	private ConfigurableApplicationContext context;
@@ -80,17 +119,31 @@ public class MainController {
 	void initialize() {
 
 	}
-	
-	public void switchScreen(Event event) throws IOException {
-		try {
-			System.out.println(event.getSource().equals(addProductTab) +","+event.getSource().equals(productSearchTab));
-			if(event.getSource().equals(addProductTab)) {
-				addProductTab.setContent(screen.getFXMLNode(SakuraScreen.ADD_PRODUCT));
-			}else if(event.getSource().equals(productSearchTab)) {
-				productSearchTab.setContent(screen.getFXMLNode(SakuraScreen.PRODUCT_SEARCH));
-			}
-		} catch (Exception e) {
-			
+
+	@FXML
+	void addProduct(ActionEvent event) {
+
+	}
+
+	@FXML
+	void openImage(ActionEvent event) throws FileNotFoundException {
+		
+		List<File> filePath = fileChooser.showOpenMultipleDialog(((Node) event.getSource()).getScene().getWindow());
+		
+		for(File file : filePath) {
+			Image image = new Image(new FileInputStream(file));
+			ImageView view = new ImageView(image);
+			view.setPreserveRatio(true);
+			view.setFitWidth(imagePanel.getWidth());
+			view.setFitHeight(171);
+			imagePanel.getChildren().add(view);
 		}
+	}
+	
+	public void switchScreen() throws IOException {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/app/sakura/view/ProductSearch.fxml"));
+		loader.setControllerFactory(context::getBean);
+		Node rootNode = loader.load();
+		productSearch.setContent(rootNode);
 	}
 }

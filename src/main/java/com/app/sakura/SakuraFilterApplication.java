@@ -48,7 +48,7 @@ public class SakuraFilterApplication extends Application {
 		primaryStage.centerOnScreen();
 		primaryStage.show();
 	}
-
+	
 	@Override
 	public void stop() throws Exception {
 		context.close();

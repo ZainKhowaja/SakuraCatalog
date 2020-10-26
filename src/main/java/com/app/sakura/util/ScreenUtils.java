@@ -64,7 +64,9 @@ public class ScreenUtils {
 			return rootNode;
 		} catch (Exception e) {
 			System.out.println("Error -> " + screen.getScreenName() + " Not Found !");
+			e.printStackTrace();
 			throw new Exception(screen.getScreenName() + " Not Found !");
+			
 		}
 	}
 

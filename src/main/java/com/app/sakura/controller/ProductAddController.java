@@ -164,8 +164,6 @@ public class ProductAddController {
 
 	}
 
-
-
 	private Product composeAddProductModal(){
 		Product product = new Product();
 		product.setSakuraNo(sakuraId.getText());
@@ -181,7 +179,7 @@ public class ProductAddController {
 		productDetail.setContains(String.valueOf(contains.getValue()));
 		productDetail.setVolume(String.valueOf(volumes.getValue()));
 		product.setProductDetail(productDetail);
-		if (filePath.size() > 0) {
+		if (filePath != null && filePath.size() > 0) {
 			product.setImagePath(filePath.get(0).getAbsolutePath());
 		} else {
 			product.setImagePath(null);

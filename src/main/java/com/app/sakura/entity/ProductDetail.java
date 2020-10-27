@@ -1,18 +1,15 @@
 package com.app.sakura.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity(name = "product_detail")
 public class ProductDetail {
 
-	@Id
-	@Column(name = "id")
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
-	
+
     @Column(name = "sakura_no")
     private String sakuraNo;
 
@@ -30,6 +27,14 @@ public class ProductDetail {
 
     @Column(name = "volume")
     private String volume;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getSakuraNo() {
         return sakuraNo;

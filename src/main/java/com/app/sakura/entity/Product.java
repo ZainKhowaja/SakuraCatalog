@@ -33,6 +33,12 @@ public class Product {
     @JoinColumn(name = "sakura_no" , referencedColumnName = "sakura_no",insertable = false,updatable = false, foreignKey = @ForeignKey(name = "none"))
     private ProductDetail productDetail;
 
+    @Column(name = "last_updated")
+    private String last_updated;
+
+    @Column(name = "active")
+    private int active;
+
     public ProductDetail getProductDetail() {
         return productDetail;
     }

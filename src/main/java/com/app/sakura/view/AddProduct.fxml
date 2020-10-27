@@ -1,19 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.Spinner?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="502.0" prefWidth="1249.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.sakura.controller.ProductAddController">
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="502.0" prefWidth="1249.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.sakura.controller.ProductAddController">
    <children>
       <GridPane layoutX="37.0" layoutY="85.0" prefHeight="320.0" prefWidth="312.0">
          <columnConstraints>
@@ -35,11 +26,11 @@
             <Label alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="100.0" text="Reference Id" GridPane.rowIndex="1" />
             <TextField fx:id="refId" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="100.0" text="Filter Type" GridPane.rowIndex="2" />
-            <ComboBox fx:id="filterType" maxWidth="1.7976931348623157E308" prefHeight="12.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ComboBox fx:id="filterType" maxWidth="1.7976931348623157E308" prefHeight="12.0" prefWidth="200.0" promptText="Select Filter" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="100.0" text="Manufacturer" GridPane.rowIndex="3" />
-            <ComboBox fx:id="manufacturer" maxWidth="1.7976931348623157E308" prefHeight="12.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ComboBox fx:id="manufacturer" maxWidth="1.7976931348623157E308" prefHeight="12.0" prefWidth="200.0" promptText="Select Manufacturer" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Label alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="100.0" text="Type Details" GridPane.rowIndex="4" />
-            <ComboBox fx:id="typeDetails" maxWidth="1.7976931348623157E308" prefHeight="12.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <ComboBox fx:id="typeDetails" maxWidth="1.7976931348623157E308" prefHeight="12.0" prefWidth="200.0" promptText="Select Type" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Button fx:id="chooseImage" mnemonicParsing="false" onAction="#openImage" prefHeight="26.0" prefWidth="186.0" text="Choose Image" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
             <Button fx:id="addProduct" mnemonicParsing="false" onAction="#addProduct" prefHeight="26.0" prefWidth="121.0" text="Add Product" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
          </children>

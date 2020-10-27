@@ -10,27 +10,25 @@ import java.util.ResourceBundle;
 import java.util.stream.Stream;
 
 import com.app.sakura.entity.*;
+import com.app.sakura.enums.SakuraScreen;
 import com.app.sakura.repository.*;
 import com.app.sakura.service.DataValidator;
 import com.app.sakura.util.AlertUtil;
+import com.app.sakura.util.ScreenUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.Event;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Component;
 
-import com.app.sakura.enums.SakuraScreen;
-import com.app.sakura.util.ScreenUtils;
-
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 
@@ -92,9 +90,7 @@ public class ProductAddController {
 	
 	@FXML
 	private Tab productSearch;
-	
-	@Autowired
-	private ConfigurableApplicationContext context;
+
 
 	private FileChooser fileChooser = new FileChooser();
 
@@ -206,12 +202,5 @@ public class ProductAddController {
 			view.setFitHeight(171);
 			imagePanel.getChildren().add(view);
 		}
-	}
-	
-	public void switchScreen() throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/app/sakura/view/ProductSearch.fxml"));
-		loader.setControllerFactory(context::getBean);
-		Node rootNode = loader.load();
-		productSearch.setContent(rootNode);
 	}
 }

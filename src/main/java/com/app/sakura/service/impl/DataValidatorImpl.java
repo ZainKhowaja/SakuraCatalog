@@ -22,6 +22,8 @@ public class DataValidatorImpl implements DataValidator {
             isValidated = false;
         } else if (product.getProductDetail() == null) {
             isValidated = false;
+        } else if (product.getFilter() == null || product.getManufacturer() == null || product.getTypeDetail() == null){
+            isValidated = false;
         }
         return isValidated;
     }

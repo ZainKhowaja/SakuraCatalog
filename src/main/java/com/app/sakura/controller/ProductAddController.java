@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Stream;
@@ -106,6 +107,8 @@ public class ProductAddController {
 	private ProductRepository productRepository;
 	@Autowired
 	private ProductDetailRepository productDetailRepository;
+	@Autowired
+	private ProductImageRepository productImageRepository;
 
 	private List<File> filePath;
 
@@ -133,6 +136,7 @@ public class ProductAddController {
 		loadFilterType();
 		loadManfacturers();
 		loadTypeDetails();
+		filePath = new ArrayList<>();
 	}
 
 	private void loadManfacturers() {
@@ -146,6 +150,9 @@ public class ProductAddController {
 	private void loadFilterType() {
 		filterType.setItems(FXCollections.observableList(filterRepository.findAll()));
 	}
+	//TODO: add primary application field
+	//TODO: clear screen after adding
+	//TODO: alert error (if possible)
 
 	@FXML
 	void addProduct(ActionEvent event) {
@@ -154,7 +161,7 @@ public class ProductAddController {
 			ProductDetail productDetailSaved = productDetailRepository.save(productModal.getProductDetail());
 			productModal.setProductDetail(productDetailSaved);
 			productModal = productRepository.save(productModal);
-
+			saveProductImage(productModal);
 			if(productModal != null){
 				AlertUtil.showError("Product Added Successfully");
 			}
@@ -162,6 +169,17 @@ public class ProductAddController {
 			AlertUtil.showError("Invalid Data");
 		}
 
+	}
+
+	private void saveProductImage(Product product) {
+		if (filePath != null && filePath.size() > 0) {
+			for(File file : filePath) {
+				ProductImage image = new ProductImage();
+				image.setImageUrl(file.getAbsolutePath());
+				image.setProduct(product);
+				productImageRepository.save(image);
+			}
+		}
 	}
 
 	private Product composeAddProductModal(){
@@ -173,25 +191,21 @@ public class ProductAddController {
 		product.setFilter(filterType.getSelectionModel().getSelectedItem());
 		ProductDetail productDetail = new ProductDetail();
 		productDetail.setSakuraNo(sakuraId.getText());
-		productDetail.setHeight(String.valueOf(height.getValue()));
-		productDetail.setOutDiameter(String.valueOf(outerD.getValue()));
-		productDetail.setInnerDiameter(String.valueOf(innerD.getValue()));
-		productDetail.setContains(String.valueOf(contains.getValue()));
-		productDetail.setVolume(String.valueOf(volumes.getValue()));
+		productDetail.setHeight(height.getEditor().getText());
+		productDetail.setOutDiameter(outerD.getEditor().getText());
+		productDetail.setInnerDiameter(innerD.getEditor().getText());
+		productDetail.setContains(contains.getEditor().getText());
+		productDetail.setVolume(volumes.getEditor().getText());
 		product.setProductDetail(productDetail);
-		if (filePath != null && filePath.size() > 0) {
-			product.setImagePath(filePath.get(0).getAbsolutePath());
-		} else {
-			product.setImagePath(null);
-		}
 		return product;
 	}
 
 	@FXML
 	void openImage(ActionEvent event) throws FileNotFoundException {
 		
-		filePath = fileChooser.showOpenMultipleDialog(((Node) event.getSource()).getScene().getWindow());
-		
+		List<File> tempFilePath = fileChooser.showOpenMultipleDialog(((Node) event.getSource()).getScene().getWindow());
+		tempFilePath.forEach(file -> filePath.add(file));
+
 		for(File file : filePath) {
 			Image image = new Image(new FileInputStream(file));
 			ImageView view = new ImageView(image);

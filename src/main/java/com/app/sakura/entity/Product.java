@@ -1,6 +1,7 @@
 package com.app.sakura.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity(name = "product")
 public class Product {
@@ -25,9 +26,6 @@ public class Product {
 
     @Column(name = "primary_app")
     private String primaryApplication;
-
-    @Column(name = "image_path")
-    private String imagePath;
 
     @ManyToOne
     @JoinColumn(name = "sakura_no" , referencedColumnName = "sakura_no",insertable = false,updatable = false, foreignKey = @ForeignKey(name = "none"))
@@ -95,11 +93,4 @@ public class Product {
         this.primaryApplication = primaryApplication;
     }
 
-    public String getImagePath() {
-        return imagePath;
-    }
-
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
-    }
 }

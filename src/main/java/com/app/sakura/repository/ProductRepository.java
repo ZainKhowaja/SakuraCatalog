@@ -9,4 +9,7 @@ public interface ProductRepository extends JpaRepository<Product,String> {
 
     List<Product> findBySakuraNoLike(String sakuraNo);
     List<Product> findByRefrenceNoLike(String refrenceNo);
+    Product findBySakuraNo(String sakuraNo);
+    Product findByRefrenceNo(String refrenceNo);
+    
 }

@@ -16,7 +16,7 @@
 
 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="502.0" prefWidth="1249.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.sakura.controller.ProductSearchController">
    <children>
-      <Button fx:id="dataBTN" layoutX="443.0" layoutY="32.0" mnemonicParsing="false" onAction="#clicked" prefHeight="26.0" prefWidth="121.0" text="Add Product" />
+      <Button fx:id="dataBTN" layoutX="443.0" layoutY="32.0" mnemonicParsing="false" onAction="#clicked" prefHeight="26.0" prefWidth="121.0" text="Add Dummy Data" />
       <Label layoutX="22.0" layoutY="20.0" prefHeight="50.0" prefWidth="426.0" styleClass="lblHeader" text="Product Search">
          <font>
             <Font name="System Bold" size="18.0" />
@@ -159,8 +159,8 @@
         <columns>
           <TableColumn fx:id="columnOne" prefWidth="75.0" text="Sakura #" />
           <TableColumn fx:id="columnTwo" prefWidth="137.5999755859375" text="Filter Type" />
-            <TableColumn fx:id="columnThree" prefWidth="155.20001220703125" text="Type Detail" />
-            <TableColumn fx:id="columnFour" prefWidth="176.79996337890623" text="Primary Application" />
+            <TableColumn fx:id="columnThree" prefWidth="155.2" text="Type Detail" />
+            <TableColumn fx:id="columnFour" minWidth="0.0" prefWidth="176.5" text="Primary Application" />
         </columns>
       </TableView>
    </children>

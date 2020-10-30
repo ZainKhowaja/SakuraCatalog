@@ -1,9 +1,11 @@
 package com.app.sakura.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
 @Entity(name = "product_detail")
-public class ProductDetail {
+public class ProductDetail implements Serializable {
 
     @Id
     @Column(name = "id")

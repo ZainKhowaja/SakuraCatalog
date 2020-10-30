@@ -3,6 +3,7 @@ package com.app.sakura;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -32,13 +33,13 @@ public class SakuraFilterApplication extends Application {
 			xOffset = event.getSceneX();
 			yOffset = event.getSceneY();
 		});
-		
+
 		rootNode.setOnMouseDragged((event) -> {
 			primaryStage.setX(event.getScreenX() - xOffset);
 			primaryStage.setY(event.getScreenY() - yOffset);
 
 		});
-		
+
 		Scene scene = new Scene(rootNode);
 		scene.setFill(Color.TRANSPARENT);
 		scene.getStylesheets().add(getClass().getClassLoader().getResource("Style.css").toExternalForm());
@@ -48,7 +49,7 @@ public class SakuraFilterApplication extends Application {
 		primaryStage.centerOnScreen();
 		primaryStage.show();
 	}
-	
+
 	@Override
 	public void stop() throws Exception {
 		context.close();

@@ -12,3 +12,4 @@ spring:
     username: root
     driver-class-name: org.sqlite.JDBC
     url: jdbc:sqlite:stockapp.db
+    

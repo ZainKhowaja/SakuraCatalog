@@ -17,12 +17,12 @@
          <top>
             <Pane prefHeight="100.0" prefWidth="1249.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label alignment="CENTER" layoutX="1.0" layoutY="1.0" prefHeight="100.0" prefWidth="1249.0" text="AdminX">
+                  <Label alignment="CENTER" layoutX="1.0" layoutY="1.0" prefHeight="100.0" prefWidth="1249.0" text="SAKURA">
                      <font>
                         <Font name="System Bold" size="41.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="517.0" layoutY="47.0" prefHeight="57.0" prefWidth="215.0" text="student managment system">
+                  <Label alignment="CENTER" layoutX="517.0" layoutY="47.0" prefHeight="57.0" prefWidth="215.0" text="F I L T E R    P R O D U C T S">
                      <font>
                         <Font size="13.0" />
                      </font>

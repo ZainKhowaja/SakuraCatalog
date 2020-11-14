@@ -1,5 +1,9 @@
 package com.app.sakura.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,10 +12,12 @@ import org.springframework.stereotype.Component;
 import com.app.sakura.entity.Filter;
 import com.app.sakura.entity.Manufacturer;
 import com.app.sakura.entity.Product;
+import com.app.sakura.entity.ProductImage;
 import com.app.sakura.entity.TypeDetail;
 import com.app.sakura.model.SearchProduct;
 import com.app.sakura.repository.FilterRepository;
 import com.app.sakura.repository.ManufacturerRepository;
+import com.app.sakura.repository.ProductImageRepository;
 import com.app.sakura.repository.ProductRepository;
 import com.app.sakura.repository.TypeDetailRepository;
 
@@ -28,6 +34,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 
@@ -103,6 +111,9 @@ public class ProductSearchController {
 	@Autowired
 	private TypeDetailRepository typeDetailRepository;
 	
+	@Autowired
+	private ProductImageRepository productImageRepository;
+	
 	@FXML
 	void clicked(ActionEvent event) {
 		System.out.println(dataBTN.getText());
@@ -141,6 +152,12 @@ public class ProductSearchController {
 		SortedList<SearchProduct> sortedData = new SortedList<>(filteredData);
 		sortedData.comparatorProperty().bind(tableView.comparatorProperty());
 		tableView.setItems(sortedData);
+		
+		tableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) ->{
+			newSelection.getColumnOne();
+			String sakuraId = isReferenceSelected() ? newSelection.getColumnThree() : newSelection.getColumnOne();
+			loadDetails(sakuraId);
+		});
 		
 	}
 
@@ -212,11 +229,7 @@ public class ProductSearchController {
 			columnThree.setText("Type Detail");
 			
 		}
-		tableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) ->{
-			newSelection.getColumnOne();
-			String sakuraId = isReferenceSelected() ? newSelection.getColumnThree() : newSelection.getColumnOne();
-			loadDetails(sakuraId);
-		});
+		
 	}
 	
 	private void loadDetails(String sakuraId) {
@@ -230,7 +243,26 @@ public class ProductSearchController {
 		outer.setText(product.getProductDetail().getOutDiameter());
 		innerDiameter.setText(product.getProductDetail().getInnerDiameter());
 		
+		containPeices.setText(product.getProductDetail().getContains());
 		volume.setText(product.getProductDetail().getVolume());
+		
+		imagePanel.getChildren().add(new ImageView());
+		List<ProductImage> images = productImageRepository.findByProductSakuraNo(sakuraId);
+		for(ProductImage path : images) {
+			Image image = null;
+			try {
+				image = new Image(new FileInputStream(new File(path.getImageUrl())));
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			ImageView view = new ImageView(image);
+			view.setPreserveRatio(true);
+			view.setFitWidth(imagePanel.getWidth());
+			view.setFitHeight(171);
+			imagePanel.getChildren().add(view);
+		}
+		
 	}
 
 	private void addDummyData() {

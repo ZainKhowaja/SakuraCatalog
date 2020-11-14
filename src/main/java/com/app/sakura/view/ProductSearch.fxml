@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -16,7 +15,6 @@
 
 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="502.0" prefWidth="1249.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.sakura.controller.ProductSearchController">
    <children>
-      <Button fx:id="dataBTN" layoutX="443.0" layoutY="32.0" mnemonicParsing="false" onAction="#clicked" prefHeight="26.0" prefWidth="121.0" text="Add Dummy Data" />
       <Label layoutX="22.0" layoutY="20.0" prefHeight="50.0" prefWidth="426.0" styleClass="lblHeader" text="Product Search">
          <font>
             <Font name="System Bold" size="18.0" />

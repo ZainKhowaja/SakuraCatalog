@@ -199,7 +199,6 @@ public class ProductAddController {
 		product.setProductDetail(productDetail);
 		return product;
 	}
-
 	@FXML
 	void openImage(ActionEvent event) throws FileNotFoundException {
 		

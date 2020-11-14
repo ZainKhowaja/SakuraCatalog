@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<Pane prefHeight="400.0" prefWidth="539.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.sakura.controller.LoginController">
+<Pane prefHeight="400.0" prefWidth="539.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.sakura.controller.LoginController">
    <children>
       <BorderPane layoutX="11.0" layoutY="8.0" prefHeight="384.0" prefWidth="517.0">
          <center>
@@ -30,12 +33,12 @@
          <top>
             <Pane prefHeight="110.0" prefWidth="517.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
                <children>
-                  <Label alignment="CENTER" layoutX="1.0" prefHeight="109.0" prefWidth="517.0" text="AdminX">
+                  <Label alignment="CENTER" layoutX="1.0" prefHeight="109.0" prefWidth="517.0" text="SAKURA">
                      <font>
                         <Font name="System Bold" size="35.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="1.0" layoutY="59.0" prefHeight="34.0" prefWidth="517.0" text="student managment system">
+                  <Label alignment="CENTER" layoutX="1.0" layoutY="59.0" prefHeight="34.0" prefWidth="517.0" text="F I L T E R    P R O D U C T S">
                      <font>
                         <Font size="11.0" />
                      </font>

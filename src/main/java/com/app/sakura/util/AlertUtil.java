@@ -13,4 +13,12 @@ public class AlertUtil {
         errorAlert.setContentText(message);
         errorAlert.showAndWait();
     }
+
+
+    public static void showInfo(String message){
+        infoAlert.setGraphic(null);
+        infoAlert.setHeaderText("Info");
+        infoAlert.setContentText(message);
+        infoAlert.showAndWait();
+    }
 }

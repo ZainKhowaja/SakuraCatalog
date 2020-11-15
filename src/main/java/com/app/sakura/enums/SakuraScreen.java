@@ -2,7 +2,7 @@ package com.app.sakura.enums;
 
 public enum SakuraScreen {
 	LOGIN("Login.fxml"), MAIN_SCREEN("MainView.fxml"), ADD_PRODUCT("AddProduct.fxml"),
-	PRODUCT_SEARCH("ProductSearch.fxml");
+	PRODUCT_SEARCH("ProductSearch.fxml"), ADD_REFERENCE("AddReference.fxml");
 
 	private String screenName;
 

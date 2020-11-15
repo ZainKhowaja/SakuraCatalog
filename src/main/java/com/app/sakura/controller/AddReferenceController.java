@@ -12,8 +12,11 @@ import com.app.sakura.util.ScreenUtils;
 import javafx.collections.FXCollections;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -46,13 +49,13 @@ public class AddReferenceController {
 
     @FXML
     public void initialize(){
-        fujiNo.setText("A-100");
+        fujiNo.setText(ProductSearchController.sakuraId);
         loadBrand();
     }
 
     @FXML
     public void exit(Event event){
-        screen.switchScreen(event.getSource(), SakuraScreen.MAIN_SCREEN);
+    	((Stage) ((Node) fujiNo).getScene().getWindow()).close();
     }
 
     @FXML

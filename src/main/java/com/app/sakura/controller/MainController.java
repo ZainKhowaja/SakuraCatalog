@@ -14,7 +14,10 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 
 @Controller
 public class MainController {
@@ -36,6 +39,15 @@ public class MainController {
 	@FXML
 	private Tab addProductTab;
 
+	@FXML
+	private TabPane tabPane;
+	
+    @FXML
+    private BorderPane mainPane;
+    
+    @FXML
+    private Pane borderPane;
+	
 	@FXML
 	void exit(MouseEvent event) {
 		System.exit(0);
@@ -64,8 +76,15 @@ public class MainController {
 		try {
 			if(event.getSource().equals(addProductTab)) {
 				addProductTab.setContent(screen.getFXMLNode(SakuraScreen.ADD_PRODUCT));
+//				tabPane.setPrefHeight(664);
+				mainPane.setPrefHeight(626);
+//				borderPane.setPrefSize(borderPane.getPrefWidth(), 664);
 			}else if(event.getSource().equals(productSearchTab)) {
+				tabPane.setPrefHeight(900);
+				mainPane.setPrefHeight(900);
+//				borderPane.setPrefSize(borderPane.getPrefWidth(), 1000);
 				productSearchTab.setContent(screen.getFXMLNode(SakuraScreen.PRODUCT_SEARCH));
+				
 			}
 		} catch (Exception e) {
 			

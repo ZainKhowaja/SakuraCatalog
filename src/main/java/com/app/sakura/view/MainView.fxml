@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="664.0" prefWidth="1288.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.sakura.controller.MainController">
+<Pane fx:id="borderPane" prefHeight="1023.0" prefWidth="1288.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.sakura.controller.MainController">
    <children>
-      <BorderPane layoutX="20.0" layoutY="16.0" prefHeight="632.0" prefWidth="1249.0" style="-fx-background-color: white;">
+      <BorderPane fx:id="mainPane" layoutX="20.0" layoutY="16.0" prefHeight="626.0" prefWidth="1249.0" style="-fx-background-color: white;">
          <top>
             <Pane prefHeight="100.0" prefWidth="1249.0" BorderPane.alignment="CENTER">
                <children>
@@ -51,7 +51,7 @@
             <DropShadow />
          </effect>
          <center>
-            <TabPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent;" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+            <TabPane fx:id="tabPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent;" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
               <tabs>
                 <Tab fx:id="addProductTab" onSelectionChanged="#switchScreen" text="Add Product" />
                 <Tab fx:id="productSearchTab" onSelectionChanged="#switchScreen" text="Product Search">

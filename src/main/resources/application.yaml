@@ -13,3 +13,13 @@ spring:
     driver-class-name: org.sqlite.JDBC
     url: jdbc:sqlite:stockapp.db
     
+
+config:
+  email: zainnoushad@yahoo.com
+  emailName: Zain
+  phone: 03322620831
+  alert: true
+
+mailjet:
+  apiKey: 6029fe5c65913ed9995048b29868428d
+  apiSecret: 43d336cb7207d083074a240da925ef13

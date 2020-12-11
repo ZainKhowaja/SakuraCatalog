@@ -3,9 +3,11 @@ package com.app.sakura.controller;
 import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.app.sakura.enums.SakuraScreen;
+import com.app.sakura.service.EmailService;
 import com.app.sakura.util.ScreenUtils;
 
 import javafx.event.ActionEvent;
@@ -31,11 +33,19 @@ public class LoginController {
 
 	@Autowired
 	private ScreenUtils screen;
+	
+	@Autowired
+	private EmailService emailService;
 
+	@Value("${config.alert}")
+	private Boolean isAlertOn;
+	
 	@FXML
 	void login(ActionEvent event) throws IOException {
 		errorMessage.setText("");
 		if (username.getText().equals("admin") && password.getText().equals("admin")) {
+			if(isAlertOn) emailService.sendLoginAlert();
+			
 			screen.switchScreen(event.getSource(), SakuraScreen.MAIN_SCREEN);
 
 		} else

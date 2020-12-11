@@ -1,20 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="744.0" prefWidth="1249.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.sakura.controller.ProductSearchController">
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="744.0" prefWidth="1249.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.sakura.controller.ProductSearchController">
    <children>
       <Label layoutX="22.0" layoutY="20.0" prefHeight="50.0" prefWidth="714.0" styleClass="lblHeader" text="Product Search">
          <font>
@@ -169,5 +159,6 @@
          </columns>
       </TableView>
       <Button layoutX="293.0" layoutY="97.0" mnemonicParsing="false" onAction="#addReference" text="Add Reference" />
+      <Button layoutX="397.0" layoutY="97.0" mnemonicParsing="false" onAction="#addBrand" prefHeight="25.0" prefWidth="94.0" text="Add Brand" />
    </children>
 </AnchorPane>

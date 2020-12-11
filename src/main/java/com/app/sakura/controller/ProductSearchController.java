@@ -361,4 +361,8 @@ public class ProductSearchController {
 //		}
 
 	}
+
+	public void addBrand() {
+		screen.switchScreen(refTableView, SakuraScreen.ADD_BRAND, true);
+	}
 }

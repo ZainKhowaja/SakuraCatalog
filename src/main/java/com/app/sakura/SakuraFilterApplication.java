@@ -1,5 +1,6 @@
 package com.app.sakura;
 
+import com.app.sakura.util.AlertUtil;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -58,7 +59,18 @@ public class SakuraFilterApplication extends Application {
 	}
 
 	public static void main(String[] args) {
-		launch(args);
+		if(appAuthentication()) {
+			launch(args);
+		}else{
+//			AlertUtil.showError("Unable to verify computer");
+		}
+		System.exit(-1);
+	}
+
+	private static boolean appAuthentication() {
+		String hash = System.getenv("APP_SAKURA");
+		System.out.println("Hash : "+hash);
+		return hash == null ? true : hash.equalsIgnoreCase("AE2B1FCA515949E5D54FB22B8ED95575");
 	}
 
 }

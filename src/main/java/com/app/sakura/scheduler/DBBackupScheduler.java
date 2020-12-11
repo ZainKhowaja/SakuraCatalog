@@ -14,7 +14,6 @@ public class DBBackupScheduler {
     private boolean enableDbBackup;
     private static final long DELAY = 3600000L; // 1 HOUR
 
-    @EventListener(ApplicationReadyEvent.class)
     @Scheduled(fixedDelay =  DELAY)
     public void dbBackupService(){
         if(!enableDbBackup){

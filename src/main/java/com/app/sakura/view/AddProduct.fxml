@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="502.0" prefWidth="1249.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.sakura.controller.ProductAddController">
+<AnchorPane fx:id="windowPane" minHeight="0.0" minWidth="0.0" prefHeight="502.0" prefWidth="1249.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.sakura.controller.ProductAddController">
    <children>
       <GridPane layoutX="37.0" layoutY="85.0" prefHeight="320.0" prefWidth="312.0">
          <columnConstraints>
@@ -35,7 +35,7 @@
             <Button fx:id="addProduct" mnemonicParsing="false" onAction="#addProduct" prefHeight="26.0" prefWidth="121.0" text="Add Product" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
          </children>
       </GridPane>
-      <Label layoutX="37.0" layoutY="20.0" prefHeight="50.0" prefWidth="310.0" styleClass="lblHeader" text="Product">
+      <Label fx:id="proLabel" layoutX="37.0" layoutY="20.0" onMouseClicked="#openAdd" prefHeight="50.0" prefWidth="310.0" styleClass="lblHeader" text="Product">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>

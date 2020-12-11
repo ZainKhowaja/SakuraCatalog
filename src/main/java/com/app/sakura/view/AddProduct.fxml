@@ -35,7 +35,7 @@
             <Button fx:id="addProduct" mnemonicParsing="false" onAction="#addProduct" prefHeight="26.0" prefWidth="121.0" text="Add Product" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
          </children>
       </GridPane>
-      <Label fx:id="proLabel" layoutX="37.0" layoutY="20.0" onMouseClicked="#openAdd" prefHeight="50.0" prefWidth="310.0" styleClass="lblHeader" text="Product">
+      <Label fx:id="proLabel" layoutX="37.0" layoutY="20.0" prefHeight="50.0" prefWidth="310.0" styleClass="lblHeader" text="Product">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>

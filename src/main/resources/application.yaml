@@ -8,17 +8,17 @@ spring:
       ddl-auto: update
     database-platform: com.app.sakura.config.SQLiteDialect
   datasource:
-    password:
+    password: 
     username: root
     driver-class-name: org.sqlite.JDBC
-    url: jdbc:sqlite:stockapp.db
+    url: jdbc:sqlite:file:stockapp.db?transaction_mode=DEFERRED&shared_cache=false&password=QSint&hmac_algorithm=0&key=QSint&date_precision=MILLISECONDS&hmac_use=1&kdf_iter=64000&kdf_algorithm=0&open_mode=70&page_size=1024&cipher=sqlcipher&date_class=INTEGER&date_string_format=yyyy-MM-dd HH:mm:ss.SSS&hexkey_mode=SQLCIPHER&plaintext_header_size=0
     
 
 config:
   email: zainnoushad@yahoo.com
   emailName: Zain
   phone: 03322620831
-  alert: true
+  alert: false
 
 mailjet:
   apiKey: 6029fe5c65913ed9995048b29868428d

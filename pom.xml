@@ -22,10 +22,10 @@
 	<dependencies>
 
 		<!-- SQL Lite Drivers -->
-		<dependency>
-			<groupId>org.xerial</groupId>
-			<artifactId>sqlite-jdbc</artifactId>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.xerial</groupId> -->
+<!-- 			<artifactId>sqlite-jdbc</artifactId> -->
+<!-- 		</dependency> -->
 
 		<dependency>
 			<groupId>org.openjfx</groupId>
@@ -43,6 +43,11 @@
 			<artifactId>mailjet-client</artifactId>
 			<version>4.2.0</version>
 		</dependency>
+		<dependency>
+		  <groupId>io.github.willena</groupId>
+		  <artifactId>sqlite-jdbc</artifactId>
+		  <version>3.33.0.1</version>
+	</dependency>
 	</dependencies>
 
 	<build>

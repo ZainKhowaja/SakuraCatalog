@@ -19,7 +19,7 @@ public class DataValidatorImpl implements DataValidator {
         } else if (productRepository.findById(product.getSakuraNo()).isPresent()) {
             isValidated = false;
         } else if (product.getRefrenceNo() == null || product.getRefrenceNo().isEmpty()) {
-            isValidated = false;
+            isValidated = true; // make it false if want to enable reference check enbale while adding new product
         } else if (product.getProductDetail() == null) {
             isValidated = false;
         } else if (product.getFilter() == null || product.getManufacturer() == null || product.getTypeDetail() == null){

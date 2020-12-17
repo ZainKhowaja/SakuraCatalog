@@ -1,6 +1,5 @@
 package com.app.sakura.config;
 
-import com.sun.xml.internal.ws.client.dispatch.DataSourceDispatch;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.sqlite.SQLiteDataSource;

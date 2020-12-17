@@ -25,6 +25,8 @@ public class SakuraFilterApplication extends Application {
 
         if (appAuthentication()) {
             launch(args);
+        }else{
+            System.out.println("APP NOT AUTHENTICATED");
         }
         System.exit(-1);
     }

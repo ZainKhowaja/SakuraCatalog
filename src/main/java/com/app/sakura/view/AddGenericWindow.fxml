@@ -41,7 +41,7 @@
                         <children>
                             <Label fx:id="labelValue" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="56.0" prefHeight="33.0" prefWidth="90.0" text="Brand Name:" />
                             <TextField fx:id="textValue" onAction="#addData" prefHeight="26.0" prefWidth="170.0" GridPane.columnIndex="1" />
-                          <Button mnemonicParsing="false" onAction="#addData" prefHeight="25.0" prefWidth="129.0" text="Add Brand" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                          <Button fx:id="btnValue" mnemonicParsing="false" onAction="#addData" prefHeight="25.0" prefWidth="129.0" text="Add Brand" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         </children>
                     </GridPane>
                 </Pane>

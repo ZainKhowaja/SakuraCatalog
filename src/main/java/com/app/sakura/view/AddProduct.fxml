@@ -21,7 +21,7 @@
             <RowConstraints maxHeight="317.6000244140625" minHeight="10.0" prefHeight="30.40001220703124" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Label alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="100.0" text="Sakura Id" />
+            <Label alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="100.0" text="Fuji Id" />
             <TextField fx:id="sakuraId" GridPane.columnIndex="1" />
             <Label alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="100.0" text="Reference Id" GridPane.rowIndex="1" />
             <TextField fx:id="refId" GridPane.columnIndex="1" GridPane.rowIndex="1" />

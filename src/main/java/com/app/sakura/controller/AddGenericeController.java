@@ -10,6 +10,7 @@ import com.app.sakura.util.AlertUtil;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -28,6 +29,8 @@ public class AddGenericeController {
     private TextField textValue;
     @FXML
     private Label windowText;
+    @FXML
+    private Button btnValue;
 
     @Autowired
     private FilterRepository filterRepository;
@@ -49,6 +52,8 @@ public class AddGenericeController {
     private void loadWindow(AddWindowType windowType) {
         windowText.setText(windowType.getWindowText());
         labelValue.setText(windowType.getLabelText());
+        btnValue.setText(windowType.getWindowText());
+
     }
 
     @FXML

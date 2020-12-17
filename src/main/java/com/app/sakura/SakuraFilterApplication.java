@@ -31,8 +31,8 @@ public class SakuraFilterApplication extends Application {
 
     private static boolean appAuthentication() {
         String hash = System.getenv("APP_SAKURA");
-//		System.out.println("Hash : "+hash);
-        return hash == null ? true : hash.equalsIgnoreCase("AE2B1FCA515949E5D54FB22B8ED95575");
+//        return hash == null ? true : hash.equalsIgnoreCase("AE2B1FCA515949E5D54FB22B8ED95575");
+        return hash.equalsIgnoreCase("AE2B1FCA515949E5D54FB22B8ED95575");
     }
 
     public void init() throws Exception {

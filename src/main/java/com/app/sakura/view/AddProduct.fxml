@@ -40,12 +40,12 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="408.0" layoutY="19.0" prefHeight="50.0" prefWidth="310.0" styleClass="lblHeader" text="Product Details">
+      <Label layoutX="415.0" layoutY="19.0" prefHeight="50.0" prefWidth="303.0" styleClass="lblHeader" text="Product Details">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <GridPane layoutX="407.0" layoutY="84.0" prefHeight="320.0" prefWidth="312.0">
+      <GridPane layoutX="416.0" layoutY="84.0" prefHeight="320.0" prefWidth="303.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="151.20001220703125" minWidth="10.0" prefWidth="111.80001831054688" />
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="216.80000610351559" minWidth="10.0" prefWidth="199.79998168945315" />
@@ -60,7 +60,7 @@
             <RowConstraints maxHeight="317.6000244140625" minHeight="10.0" prefHeight="30.40001220703124" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Label alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="100.0" text="Height" />
+            <Label alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="106.0" text="Height" />
             <Label alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="100.0" text="Outer D" GridPane.rowIndex="1" />
             <Label alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="100.0" text="Inner D" GridPane.rowIndex="2" />
             <Label alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="100.0" text="Contains" GridPane.rowIndex="3" />
@@ -84,5 +84,8 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
+      <Label fx:id="addFilter" layoutX="358.0" layoutY="186.0" onMouseClicked="#openAddFilter" prefHeight="37.0" prefWidth="37.0" styleClass="addBtn" />
+      <Label fx:id="addMan" layoutX="358.0" layoutY="231.0" onMouseClicked="#openAddMan" prefHeight="37.0" prefWidth="37.0" styleClass="addBtn" />
+      <Label fx:id="addType" layoutX="358.0" layoutY="279.0" onMouseClicked="#openAddType" prefHeight="37.0" prefWidth="37.0" styleClass="addBtn" />
    </children>
 </AnchorPane>

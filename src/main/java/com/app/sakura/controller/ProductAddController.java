@@ -92,6 +92,15 @@ public class ProductAddController {
 	@FXML
 	private Tab productSearch;
 
+	@FXML
+	private Label addFilter;
+
+	@FXML
+	private Label addMan;
+
+	@FXML
+	private Label addType;
+
 
 	private FileChooser fileChooser = new FileChooser();
 
@@ -133,10 +142,45 @@ public class ProductAddController {
 
 	@FXML
 	void initialize() {
+		loadAddButton();
 		loadFilterType();
 		loadManfacturers();
 		loadTypeDetails();
 		filePath = new ArrayList<>();
+	}
+	private ImageView getAddButtonView(){
+		Image img = new Image("add.png");
+		ImageView view = new ImageView(img);
+		view.setFitHeight(20);
+		view.setPreserveRatio(true);
+		return view;
+	}
+	private void loadAddButton() {
+		ImageView view = getAddButtonView();
+		addFilter.setGraphic(view);
+		addMan.setGraphic(getAddButtonView());
+		addType.setGraphic(getAddButtonView());
+	}
+
+	@FXML
+	public void openAddFilter(){
+		openAddWindow(AddGenericeController.AddWindowType.FILTER);
+	}
+
+	@FXML
+	public void openAddMan(){
+		openAddWindow(AddGenericeController.AddWindowType.MANUFACTURER);
+	}
+
+	@FXML
+	public void openAddType() {
+		openAddWindow(AddGenericeController.AddWindowType.TYPE_DETAIL);
+	}
+
+
+	private void openAddWindow(AddGenericeController.AddWindowType windowType) {
+		AddGenericeController.windowType = windowType;
+		screen.switchScreen(addFilter, SakuraScreen.ADD_GENERIC_WINDOW, true);
 	}
 
 	private void loadManfacturers() {

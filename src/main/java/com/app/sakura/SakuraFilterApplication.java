@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -20,10 +21,12 @@ public class SakuraFilterApplication extends Application {
     private Parent rootNode;
     private double xOffset = 0;
     private double yOffset = 0;
+    @Value("${app.auth:true}")
+    public boolean enableAuth;
 
     public static void main(String[] args) {
 
-        if (appAuthentication()) {
+        if (new SakuraFilterApplication().appAuthentication()) {
             launch(args);
         }else{
             System.out.println("APP NOT AUTHENTICATED");
@@ -31,10 +34,15 @@ public class SakuraFilterApplication extends Application {
         System.exit(-1);
     }
 
-    private static boolean appAuthentication() {
+    private boolean appAuthentication() {
         String hash = System.getenv("APP_SAKURA");
 //        return hash == null ? true : hash.equalsIgnoreCase("AE2B1FCA515949E5D54FB22B8ED95575");
-        return hash.equalsIgnoreCase("AE2B1FCA515949E5D54FB22B8ED95575");
+        if(enableAuth) {
+            return hash.equalsIgnoreCase("AE2B1FCA515949E5D54FB22B8ED95575");
+        }else{
+            return true;
+//            return hash == null ? true : hash.equalsIgnoreCase("AE2B1FCA515949E5D54FB22B8ED95575");
+        }
     }
 
     public void init() throws Exception {

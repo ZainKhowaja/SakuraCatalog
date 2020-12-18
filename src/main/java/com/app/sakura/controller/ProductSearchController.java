@@ -150,7 +150,7 @@ public class ProductSearchController {
 
 	@FXML
 	void initialize() {
-		searchByCmbBox.getItems().addAll("Sakura Number", "Reference Number");
+		searchByCmbBox.getItems().addAll("Fuji Number", "Reference Number");
 		searchByCmbBox.getSelectionModel().selectFirst();
 		searchByCmbBox.getSelectionModel().selectedItemProperty()
 				.addListener((option, oldvalue, newvalue) -> searchByChanged());
@@ -258,7 +258,7 @@ public class ProductSearchController {
 			columnFour.setPrefWidth(176.5);
 			columnThree.setPrefWidth(155.2);
 
-			columnOne.setText("Sakura #");
+			columnOne.setText("Fuji No #");
 			columnTwo.setText("Filter Type");
 			columnThree.setText("Type Detail");
 

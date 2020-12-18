@@ -6,8 +6,8 @@ import com.app.sakura.entity.TypeDetail;
 import com.app.sakura.repository.FilterRepository;
 import com.app.sakura.repository.ManufacturerRepository;
 import com.app.sakura.repository.TypeDetailRepository;
+import com.app.sakura.service.DataValidator;
 import com.app.sakura.util.AlertUtil;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -39,8 +39,11 @@ public class AddGenericeController {
     @Autowired
     private TypeDetailRepository typeDetailRepository;
 
+    @Autowired
+    private DataValidator dataValidator;
+
     @FXML
-    public void exit(Event event) {
+    public void exit() {
         ((Stage) ((Node) windowText).getScene().getWindow()).close();
     }
 
@@ -58,7 +61,10 @@ public class AddGenericeController {
 
     @FXML
     public void addData() {
-        String filedData = textValue.getText();
+        String filedData = textValue.getText().trim();
+        if(!dataValidator.validateGenericAdd(filedData,windowType)){
+            return;
+        }
         if (windowType == AddWindowType.FILTER) {
             Filter filter = new Filter();
             filter.setName(filedData);
@@ -73,6 +79,7 @@ public class AddGenericeController {
             typeDetailRepository.save(typeDetail);
         }
         AlertUtil.showInfo("Record added");
+        exit();
     }
 
     public enum AddWindowType {

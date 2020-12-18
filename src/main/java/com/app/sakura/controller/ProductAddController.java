@@ -165,16 +165,19 @@ public class ProductAddController {
 	@FXML
 	public void openAddFilter(){
 		openAddWindow(AddGenericeController.AddWindowType.FILTER);
+		loadFilterType();
 	}
 
 	@FXML
 	public void openAddMan(){
 		openAddWindow(AddGenericeController.AddWindowType.MANUFACTURER);
+		loadManfacturers();
 	}
 
 	@FXML
 	public void openAddType() {
 		openAddWindow(AddGenericeController.AddWindowType.TYPE_DETAIL);
+		loadTypeDetails();
 	}
 
 
@@ -207,7 +210,7 @@ public class ProductAddController {
 			productModal = productRepository.save(productModal);
 			saveProductImage(productModal);
 			if(productModal != null){
-				AlertUtil.showError("Product Added Successfully");
+				AlertUtil.showInfo("Product Added Successfully");
 			}
 		}else{
 			AlertUtil.showError("Invalid Data");

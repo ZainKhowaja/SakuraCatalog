@@ -211,7 +211,7 @@ public class ProductSearchController {
 				SearchProduct searchProduct = new SearchProduct();
 				
 				searchProduct.setColumnOne(product.getReference());
-				searchProduct.setColumnTwo(product.getBrand().getName());
+				searchProduct.setColumnTwo(product.getManufacturer().getName());
 				searchProduct.setColumnThree(product.getProduct().getSakuraNo());
 				
 				response.add(searchProduct);
@@ -307,7 +307,7 @@ public class ProductSearchController {
 		productReferenceRepository.findByProduct_sakuraNo(sakuraId).forEach(ref -> {
 			SearchProduct row = new SearchProduct();
 			row.setColumnOne(ref.getReference());
-			row.setColumnTwo(ref.getBrand().getName());
+			row.setColumnTwo(ref.getManufacturer().getName());
 			allRef.add(row);
 		});
 

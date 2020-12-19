@@ -14,8 +14,8 @@ public class ProductReference {
     private String reference;
 
     @ManyToOne
-    @JoinColumn(name = "brand_id")
-    private Brand brand;
+    @JoinColumn(name = "manufacturer_id")
+    private Manufacturer manufacturer;
 
     @ManyToOne
     @JoinColumn(name = "sakura_no")
@@ -29,12 +29,12 @@ public class ProductReference {
         this.id = id;
     }
 
-    public Brand getBrand() {
-        return brand;
+    public Manufacturer getManufacturer() {
+        return manufacturer;
     }
 
-    public void setBrand(Brand brand) {
-        this.brand = brand;
+    public void setManufacturer(Manufacturer manufacturer) {
+        this.manufacturer = manufacturer;
     }
 
     public String getReference() {

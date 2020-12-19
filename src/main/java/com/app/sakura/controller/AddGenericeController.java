@@ -84,7 +84,7 @@ public class AddGenericeController {
 
     public enum AddWindowType {
         FILTER("Add Filter", "Filter Name:"),
-        MANUFACTURER("Add Manufacturer", "Manufacturer Name"),
+        MANUFACTURER("Add Brand", "Brand Name"),
         TYPE_DETAIL("Add Type", "Type Name:");
 
         private String windowText;

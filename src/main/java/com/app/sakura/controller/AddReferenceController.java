@@ -1,9 +1,11 @@
 package com.app.sakura.controller;
 
 import com.app.sakura.entity.Brand;
+import com.app.sakura.entity.Manufacturer;
 import com.app.sakura.entity.ProductReference;
 import com.app.sakura.enums.SakuraScreen;
 import com.app.sakura.repository.BrandRepository;
+import com.app.sakura.repository.ManufacturerRepository;
 import com.app.sakura.repository.ProductReferenceRepository;
 import com.app.sakura.repository.ProductRepository;
 import com.app.sakura.service.DataValidator;
@@ -27,7 +29,7 @@ public class AddReferenceController {
     private ScreenUtils screen;
 
     @Autowired
-    private BrandRepository brandRepository;
+    private ManufacturerRepository manufacturerRepository;
 
     @Autowired
     private ProductReferenceRepository productReferenceRepository;
@@ -39,7 +41,7 @@ public class AddReferenceController {
     private DataValidator dataValidator;
 
     @FXML
-    private ComboBox<Brand> brandType;
+    private ComboBox<Manufacturer> brandType;
 
     @FXML
     private TextField fujiNo;
@@ -62,7 +64,7 @@ public class AddReferenceController {
     public void addProductReference(){
         if(validateProductReference()){
             ProductReference productReference = new ProductReference();
-            productReference.setBrand(brandType.getSelectionModel().getSelectedItem());
+            productReference.setManufacturer(brandType.getSelectionModel().getSelectedItem());
             productReference.setReference(refNo.getText());
             productReference.setProduct(productRepository.findBySakuraNo(fujiNo.getText()));
             if(productReferenceRepository.save(productReference).getId() != null){
@@ -84,6 +86,6 @@ public class AddReferenceController {
     }
 
     public void loadBrand(){
-        brandType.setItems(FXCollections.observableList(brandRepository.findAll()));
+        brandType.setItems(FXCollections.observableList(manufacturerRepository.findAll()));
     }
 }

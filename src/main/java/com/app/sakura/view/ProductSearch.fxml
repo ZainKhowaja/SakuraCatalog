@@ -8,6 +8,7 @@
    <content>
       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="613.0" prefWidth="1249.0" style="-fx-background-color: white;">
          <children>
+            <Button layoutX="397.0" layoutY="97.0" mnemonicParsing="false" onAction="#addBrand" prefHeight="25.0" prefWidth="94.0" text="Add Brand" visible="false" />
             <Label layoutX="22.0" layoutY="20.0" prefHeight="50.0" prefWidth="714.0" styleClass="lblHeader" text="Product Search">
                <font>
                   <Font name="System Bold" size="18.0" />
@@ -160,8 +161,7 @@
                   <TableColumn fx:id="refColumnTwo" prefWidth="378.3999328613281" text="Manufacturer" />
                </columns>
             </TableView>
-                <Button layoutX="293.0" layoutY="97.0" mnemonicParsing="false" onAction="#addReference" text="Add Reference" />
-            <Button layoutX="397.0" layoutY="97.0" mnemonicParsing="false" onAction="#addBrand" prefHeight="25.0" prefWidth="94.0" text="Add Brand" />
+                <Button layoutX="398.0" layoutY="97.0" mnemonicParsing="false" onAction="#addReference" text="Add Reference" />
          </children>
       </AnchorPane>
    </content>

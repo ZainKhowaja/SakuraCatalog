@@ -3,6 +3,7 @@ package com.app.sakura.util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -33,4 +34,7 @@ public class FileUtil {
         }
     }
 
+    public static boolean doesDbExists() {
+        return new File("stockapp.db").exists();
+    }
 }

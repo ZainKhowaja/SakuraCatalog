@@ -18,6 +18,13 @@ public class TypeDetail {
     @Column(name = "name")
     private String name;
 
+    public TypeDetail() {
+    }
+
+    public TypeDetail(String name) {
+        this.name = name;
+    }
+
     public Integer getId() {
         return id;
     }

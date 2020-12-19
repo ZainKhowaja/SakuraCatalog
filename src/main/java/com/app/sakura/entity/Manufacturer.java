@@ -12,6 +12,13 @@ public class Manufacturer {
     @Column(name = "name")
     private String name;
 
+    public Manufacturer() {
+    }
+
+    public Manufacturer(String name) {
+        this.name = name;
+    }
+
     public Integer getId() {
         return id;
     }

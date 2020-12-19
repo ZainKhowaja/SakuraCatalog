@@ -1,5 +1,6 @@
 package com.app.sakura;
 
+import com.sun.javafx.application.LauncherImpl;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -25,7 +26,7 @@ public class SakuraFilterApplication extends Application {
     public boolean enableAuth;
 
     public static void main(String[] args) {
-
+        LauncherImpl.launchApplication(SakuraFilterApplication.class,SplashScreen.class,args);
         if (new SakuraFilterApplication().appAuthentication()) {
             launch(args);
         }else{

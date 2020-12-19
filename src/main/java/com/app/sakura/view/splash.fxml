@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="440.0" prefWidth="589.0" style="-fx-background-color: #f5f5f5;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="589.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="/splash3.gif" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="230.0" layoutY="239.0" prefHeight="46.0" prefWidth="110.0" text="F U J I " textFill="#f72e0f">
+         <font>
+            <Font name="System Bold" size="31.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="184.0" layoutY="270.0" prefHeight="46.0" prefWidth="204.0" text="A P P L I C A T I O N">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="loading" alignment="CENTER" layoutX="193.0" layoutY="67.0" prefHeight="46.0" prefWidth="204.0" text="L O A D I N G . . " textFill="#681907">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

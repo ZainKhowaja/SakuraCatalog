@@ -278,7 +278,7 @@ public class ProductSearchController {
 		innerDiameter.setText(product.getProductDetail().getInnerDiameter());
 
 		containPeices.setText(product.getProductDetail().getContains());
-		volume.setText(product.getProductDetail().getVolume());
+		volume.setText(product.getProductDetail().getThread());
 
 		imagePanel.getChildren().clear();
 		List<ProductImage> images = productImageRepository.findByProductSakuraNo(sakuraId);

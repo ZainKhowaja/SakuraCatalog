@@ -72,7 +72,7 @@ public class ProductAddController {
 	private Spinner<Double> height;
 
 	@FXML
-	private Spinner<Double> volumes;
+	private Spinner<Double> thread;
 
 	@FXML
 	private Spinner<Double> contains;
@@ -242,7 +242,7 @@ public class ProductAddController {
 		productDetail.setOutDiameter(outerD.getEditor().getText());
 		productDetail.setInnerDiameter(innerD.getEditor().getText());
 		productDetail.setContains(contains.getEditor().getText());
-		productDetail.setVolume(volumes.getEditor().getText());
+		productDetail.setThread(thread.getEditor().getText());
 		product.setProductDetail(productDetail);
 		return product;
 	}

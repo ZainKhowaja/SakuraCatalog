@@ -27,8 +27,8 @@ public class ProductDetail implements Serializable {
     @Column(name = "contains")
     private String contains;
 
-    @Column(name = "volume")
-    private String volume;
+    @Column(name = "thread")
+    private String thread;
 
     public Integer getId() {
         return id;
@@ -78,11 +78,11 @@ public class ProductDetail implements Serializable {
         this.contains = contains;
     }
 
-    public String getVolume() {
-        return volume;
+    public String getThread() {
+        return thread;
     }
 
-    public void setVolume(String volume) {
-        this.volume = volume;
+    public void setThread(String thread) {
+        this.thread = thread;
     }
 }

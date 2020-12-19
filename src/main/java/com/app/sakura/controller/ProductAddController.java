@@ -72,7 +72,7 @@ public class ProductAddController {
 	private Spinner<Double> height;
 
 	@FXML
-	private Spinner<Double> thread;
+	private Spinner<String> thread;
 
 	@FXML
 	private Spinner<Double> contains;
@@ -81,7 +81,17 @@ public class ProductAddController {
 	private Spinner<Double> outerD;
 
 	@FXML
-	private Spinner<Double> note;
+	private TextField note;
+
+	@FXML
+	private ComboBox<String> heightM;
+
+	@FXML
+	private ComboBox<String> innerM;
+
+	@FXML
+	private ComboBox<String> outerM;
+
 
 	@Autowired
 	private ScreenUtils screen;
@@ -243,6 +253,11 @@ public class ProductAddController {
 		productDetail.setInnerDiameter(innerD.getEditor().getText());
 		productDetail.setContains(contains.getEditor().getText());
 		productDetail.setThread(thread.getEditor().getText());
+		productDetail.setHeightMeasurement(heightM.getSelectionModel().getSelectedItem());
+		productDetail.setOuterMeasurement(outerM.getSelectionModel().getSelectedItem());
+		productDetail.setInnerMeasurement(innerM.getSelectionModel().getSelectedItem());
+		productDetail.setNote(note.getText());
+
 		product.setProductDetail(productDetail);
 		return product;
 	}

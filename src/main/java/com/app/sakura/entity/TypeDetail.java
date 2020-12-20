@@ -1,11 +1,8 @@
 package com.app.sakura.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Column;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.persistence.*;
 
 
 @Entity(name = "type_detail")
@@ -18,11 +15,24 @@ public class TypeDetail {
     @Column(name = "name")
     private String name;
 
+    @ManyToOne
+    @JoinColumn(name = "filter_id")
+    private Filter filter;
+
     public TypeDetail() {
     }
 
-    public TypeDetail(String name) {
+    public TypeDetail(String name , Filter filter) {
         this.name = name;
+        this.filter = filter;
+    }
+
+    public Filter getFilter() {
+        return filter;
+    }
+
+    public void setFilter(Filter filter) {
+        this.filter = filter;
     }
 
     public Integer getId() {

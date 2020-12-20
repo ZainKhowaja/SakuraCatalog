@@ -8,11 +8,14 @@ import com.app.sakura.repository.ManufacturerRepository;
 import com.app.sakura.repository.TypeDetailRepository;
 import com.app.sakura.service.DataValidator;
 import com.app.sakura.util.AlertUtil;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -31,6 +34,12 @@ public class AddGenericeController {
     private Label windowText;
     @FXML
     private Button btnValue;
+    @FXML
+    private Label filterLabel;
+    @FXML
+    private ComboBox<Filter> filterCombo;
+    @FXML
+    private GridPane grid;
 
     @Autowired
     private FilterRepository filterRepository;
@@ -57,12 +66,19 @@ public class AddGenericeController {
         labelValue.setText(windowType.getLabelText());
         btnValue.setText(windowType.getWindowText());
 
+        //remove combobox
+        if(windowType != AddWindowType.TYPE_DETAIL){
+            grid.getChildren().removeIf(node ->  GridPane.getRowIndex(node) == 1);
+        }else{
+            filterCombo.setItems(FXCollections.observableList(filterRepository.findAll()));
+        }
+
     }
 
     @FXML
     public void addData() {
         String filedData = textValue.getText().trim();
-        if(!dataValidator.validateGenericAdd(filedData,windowType)){
+        if(!dataValidator.validateGenericAdd(filedData,windowType,filterCombo.getSelectionModel().getSelectedItem())){
             return;
         }
         if (windowType == AddWindowType.FILTER) {
@@ -76,6 +92,7 @@ public class AddGenericeController {
         } else if (windowType == AddWindowType.TYPE_DETAIL) {
             TypeDetail typeDetail = new TypeDetail();
             typeDetail.setName(filedData);
+            typeDetail.setFilter(filterCombo.getSelectionModel().getSelectedItem());
             typeDetailRepository.save(typeDetail);
         }
         AlertUtil.showInfo("Record added");

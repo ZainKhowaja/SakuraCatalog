@@ -5,9 +5,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane prefHeight="242.0" prefWidth="528.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.sakura.controller.AddGenericeController">
+<Pane prefHeight="268.0" prefWidth="528.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.sakura.controller.AddGenericeController">
     <children>
-        <BorderPane layoutX="11.0" layoutY="8.0" prefHeight="226.0" prefWidth="508.0">
+        <BorderPane layoutX="11.0" layoutY="8.0" prefHeight="251.0" prefWidth="508.0">
             <top>
                 <Pane prefHeight="61.0" prefWidth="517.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
                     <children>
@@ -28,20 +28,23 @@
                 <DropShadow />
             </effect>
          <center>
-                <Pane prefHeight="73.0" prefWidth="508.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
-                    <GridPane layoutX="117.0" layoutY="14.0" prefHeight="95.0" prefWidth="275.0">
+                <Pane prefHeight="208.0" prefWidth="508.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+                    <GridPane fx:id="grid" layoutX="117.0" layoutY="14.0" prefHeight="106.0" prefWidth="275.0">
                         <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="255.0" minWidth="10.0" prefWidth="111.0" />
                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="255.0" minWidth="10.0" prefWidth="164.0" />
                         </columnConstraints>
                         <rowConstraints>
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     <RowConstraints minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         </rowConstraints>
                         <children>
-                            <Label fx:id="labelValue" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="56.0" prefHeight="33.0" prefWidth="90.0" text="Brand Name:" />
-                            <TextField fx:id="textValue" onAction="#addData" prefHeight="26.0" prefWidth="170.0" GridPane.columnIndex="1" />
-                          <Button fx:id="btnValue" mnemonicParsing="false" onAction="#addData" prefHeight="25.0" prefWidth="129.0" text="Add Brand" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                            <Label fx:id="labelValue" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="56.0" prefHeight="33.0" prefWidth="90.0" text="Brand Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                            <TextField fx:id="textValue" onAction="#addData" prefHeight="26.0" prefWidth="170.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                          <Button fx:id="btnValue" mnemonicParsing="false" onAction="#addData" prefHeight="25.0" prefWidth="129.0" text="Add Brand" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                     <Label fx:id="filterLabel" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="33.0" prefWidth="90.0" text="Filter Type:" GridPane.rowIndex="1" />
+                     <ComboBox fx:id="filterCombo" prefHeight="25.0" prefWidth="166.0" promptText="Select Type" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         </children>
                     </GridPane>
                 </Pane>

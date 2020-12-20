@@ -200,8 +200,14 @@ public class ProductAddController {
 		manufacturer.setItems(FXCollections.observableList(manufacturerRepository.findAll()));
 	}
 
+	@FXML
 	private void loadTypeDetails() {
-		typeDetails.setItems(FXCollections.observableList(typeDetailRepository.findAll()));
+		Filter selectedFilter = filterType.getSelectionModel().getSelectedItem();
+		if(selectedFilter == null){
+			typeDetails.setItems(FXCollections.emptyObservableList());
+		}else {
+			typeDetails.setItems(FXCollections.observableList(typeDetailRepository.findByFilterId(selectedFilter.getId())));
+		}
 	}
 
 	private void loadFilterType() {

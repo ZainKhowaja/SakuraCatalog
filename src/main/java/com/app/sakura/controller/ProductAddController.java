@@ -227,13 +227,29 @@ public class ProductAddController {
 			saveProductImage(productModal);
 			if(productModal != null){
 				AlertUtil.showInfo("Product Added Successfully");
+				clearScreen();
 			}
 		}else{
 			AlertUtil.showError("Invalid Data");
 		}
 
 	}
+	private void clearScreen(){
+		sakuraId.setText("");
+		filterType.getSelectionModel().clearSelection();
+		manufacturer.getSelectionModel().clearSelection();
+		typeDetails.getSelectionModel().clearSelection();
+		height.getEditor().setText("");
+		innerD.getEditor().setText("");
+		outerD.getEditor().setText("");
+		contains.getEditor().setText("");
+		heightM.getSelectionModel().selectFirst();
+		innerM.getSelectionModel().selectFirst();
+		outerM.getSelectionModel().selectFirst();
+		thread.getEditor().setText("");
+		note.setText("");
 
+	}
 	private void saveProductImage(Product product) {
 		if (filePath != null && filePath.size() > 0) {
 			for(File file : filePath) {

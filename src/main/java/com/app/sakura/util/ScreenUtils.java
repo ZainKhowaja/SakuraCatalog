@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Popup;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -46,7 +47,9 @@ public class ScreenUtils {
 				stage.setY(event.getScreenY() - yOffset);
 
 			});
-			Scene scene = new Scene(root);
+			int screenWidth = (int) Screen.getPrimary().getBounds().getWidth();
+	        int screenHeight = (int) Screen.getPrimary().getBounds().getHeight();
+			Scene scene = new Scene(root, screenWidth, screenHeight);
 			scene.setFill(Color.TRANSPARENT);
 			scene.getStylesheets().add(getClass().getClassLoader().getResource("Style.css").toExternalForm());
 			stage.setScene(scene);

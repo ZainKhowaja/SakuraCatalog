@@ -1,10 +1,17 @@
 package com.app.sakura.controller;
 
+import java.awt.print.PrinterException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,7 +24,9 @@ import com.app.sakura.entity.ProductImage;
 import com.app.sakura.entity.ProductReference;
 import com.app.sakura.entity.TypeDetail;
 import com.app.sakura.enums.SakuraScreen;
+import com.app.sakura.model.PrintProductDetails;
 import com.app.sakura.model.SearchProduct;
+import com.app.sakura.model.PrintProductDetails.PrintProductDetailsBuilder;
 import com.app.sakura.repository.BrandRepository;
 import com.app.sakura.repository.FilterRepository;
 import com.app.sakura.repository.ManufacturerRepository;
@@ -25,6 +34,8 @@ import com.app.sakura.repository.ProductImageRepository;
 import com.app.sakura.repository.ProductReferenceRepository;
 import com.app.sakura.repository.ProductRepository;
 import com.app.sakura.repository.TypeDetailRepository;
+import com.app.sakura.service.impl.PrinterService;
+import com.app.sakura.util.AlertUtil;
 import com.app.sakura.util.ScreenUtils;
 
 import javafx.collections.FXCollections;
@@ -33,6 +44,8 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.print.PrinterJob;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -74,7 +87,7 @@ public class ProductSearchController {
 	private Label sakuraNumber;
 
 	@FXML
-	private Label volume;
+	private Label note;
 
 	@FXML
 	private Label containPeices;
@@ -89,7 +102,7 @@ public class ProductSearchController {
 	private Label height;
 
 	@FXML
-	private Label primaryApp;
+	private Label thread;
 
 	@FXML
 	private Label typeDetail;
@@ -98,7 +111,7 @@ public class ProductSearchController {
 	private Label filterType;
 
 	@FXML
-	private Label status;
+	private Label brand;
 
 	@FXML
 	private HBox imagePanel;
@@ -139,6 +152,9 @@ public class ProductSearchController {
 	@Autowired
 	private ScreenUtils screen;
 
+	@Autowired
+	private PrinterService printerService;
+	
 	public static String sakuraId;
 
 	@FXML
@@ -251,7 +267,7 @@ public class ProductSearchController {
 
 			columnOne.setText("Reference #");
 			columnTwo.setText("Manufacture");
-			columnThree.setText("Sakura #");
+			columnThree.setText("Fuji No #");
 		} else {
 			// Adjust Size
 			columnFour.setVisible(true);
@@ -269,16 +285,16 @@ public class ProductSearchController {
 	private void loadDetails(String sakuraId) {
 		Product product = productRepository.findBySakuraNo(sakuraId);
 		sakuraNumber.setText(product.getSakuraNo());
-//		status.setText(product.get);
+		brand.setText(product.getManufacturer().getName());
 		filterType.setText(product.getFilter().getName());
 		typeDetail.setText(product.getTypeDetail().getName());
-		primaryApp.setText(product.getPrimaryApplication());
-		height.setText(product.getProductDetail().getHeight());
-		outer.setText(product.getProductDetail().getOutDiameter());
-		innerDiameter.setText(product.getProductDetail().getInnerDiameter());
+		thread.setText(product.getProductDetail().getThread());
+		height.setText(product.getProductDetail().getHeight() + " " + product.getProductDetail().getHeightMeasurement());
+		outer.setText(product.getProductDetail().getOutDiameter() + " " + product.getProductDetail().getOuterMeasurement());
+		innerDiameter.setText(product.getProductDetail().getInnerDiameter() + " " + product.getProductDetail().getInnerMeasurement());
 
 		containPeices.setText(product.getProductDetail().getContains());
-		volume.setText(product.getProductDetail().getThread());
+		note.setText(product.getProductDetail().getNote());
 
 		imagePanel.getChildren().clear();
 		List<ProductImage> images = productImageRepository.findByProductSakuraNo(sakuraId);
@@ -313,7 +329,7 @@ public class ProductSearchController {
 
 		refTableView.setItems(allRef);
 
-		this.sakuraId = sakuraId;
+		ProductSearchController.sakuraId = sakuraId;
 
 	}
 
@@ -352,17 +368,65 @@ public class ProductSearchController {
 	}
 
 	public void addReference() {
-//		Brand brand = new Brand();
-//		brand.setName("Tesla");
-//		BrandRepository.save(brand);
-		screen.switchScreen(refTableView, SakuraScreen.ADD_REFERENCE, true);
-//		if(BrandRepository.count()<=0) {
-
-//		}
-
+		if(tableView.getSelectionModel().getSelectedItem() != null) {
+			screen.switchScreen(refTableView, SakuraScreen.ADD_REFERENCE, true);
+			loadReference(sakuraId);
+		}else {
+			AlertUtil.showError("Select any item");
+		}
 	}
 
 	public void addBrand() {
 		screen.switchScreen(refTableView, SakuraScreen.ADD_BRAND, true);
+	}
+	
+	public void printData() {
+		
+		
+		if(tableView.getSelectionModel().getSelectedItem() != null) {
+		
+			SearchProduct selection = tableView.getSelectionModel().getSelectedItem();
+			String sakuraId = isReferenceSelected() ? selection.getColumnThree() : selection.getColumnOne();
+			
+			HashMap<String, String> reference = new HashMap<String, String>();
+			
+			productReferenceRepository
+			.findByProduct_sakuraNo(sakuraId)
+			.forEach(product -> reference.put(product.getReference(), product.getManufacturer().getName()));
+			
+			String imageUrl = "";
+			Optional<ProductImage> productImage = productImageRepository.findByProductSakuraNo(sakuraId).stream().findFirst();
+			if(productImage.isPresent()) {
+				imageUrl = productImage.get().getImageUrl();
+			}
+			
+			Product product = productRepository.findBySakuraNo(sakuraId);
+			
+			PrintProductDetailsBuilder builder = PrintProductDetailsBuilder.newBuilder();
+			builder
+			.setFilter(product.getFilter().getName())
+			.setFujiNo(product.getSakuraNo())
+			.setHeight(product.getProductDetail().getHeight())
+			.setInnerD(product.getProductDetail().getInnerDiameter())
+			.setManufacturer(product.getManufacturer().getName())
+			.setNote(product.getProductDetail().getNote())
+			.setOuterD(product.getProductDetail().getOutDiameter())
+			.setPackagingPerCaton(product.getProductDetail().getContains())
+			.setReference(reference)
+			.setThread(product.getProductDetail().getThread())
+			.setTypeDetail(product.getTypeDetail().getName())
+			.setImageName(imageUrl);
+				
+			try {
+				printerService.printProductDetails(builder.build());
+			} catch (IOException | PrinterException e) {
+				AlertUtil.showError("Error Printing Data");
+			}
+			
+		}else {
+			AlertUtil.showError("Select any item");
+		}
+		
+		
 	}
 }

@@ -1,168 +1,184 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<ScrollPane xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.sakura.controller.ProductSearchController">
+<ScrollPane minHeight="500.0" prefHeight="768.0" prefWidth="1255.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.sakura.controller.ProductSearchController">
    <content>
-      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="613.0" prefWidth="1249.0" style="-fx-background-color: white;">
-         <children>
-            <Button layoutX="397.0" layoutY="97.0" mnemonicParsing="false" onAction="#addBrand" prefHeight="25.0" prefWidth="94.0" text="Add Brand" visible="false" />
-            <Label layoutX="22.0" layoutY="20.0" prefHeight="50.0" prefWidth="714.0" styleClass="lblHeader" text="Product Search">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-            <ComboBox fx:id="searchByCmbBox" layoutX="25.0" layoutY="97.0" prefHeight="34.0" prefWidth="182.0" />
-            <TextField fx:id="searchText" layoutX="505.0" layoutY="97.0" onKeyTyped="#search" prefHeight="34.0" prefWidth="230.0" />
-            <Label layoutX="767.0" layoutY="20.0" prefHeight="50.0" prefWidth="442.0" styleClass="lblHeader" text="Product Detail">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-            <GridPane layoutX="773.0" layoutY="90.0" prefHeight="382.0" prefWidth="442.0">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="163.20001220703125" minWidth="10.0" prefWidth="163.20001220703125" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="140.79998779296875" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints maxHeight="321.6000122070312" minHeight="6.199993896484379" prefHeight="31.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="258.8" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="258.8" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="258.8" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="258.8" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="258.8" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="258.8" minHeight="0.0" prefHeight="31.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="258.8" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="258.8" minHeight="10.0" prefHeight="39.59998779296876" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="258.8" minHeight="10.0" prefHeight="27.600012207031227" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="258.8" minHeight="10.0" prefHeight="46.39996337890625" vgrow="SOMETIMES" />
-              </rowConstraints>
+      <BorderPane prefHeight="768.0" prefWidth="1244.0">
+         <center>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="768.0" prefWidth="1207.0" style="-fx-background-color: white;">
                <children>
-                  <Label maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="127.0" text="Fuji Number">
+                  <Button layoutX="397.0" layoutY="97.0" mnemonicParsing="false" onAction="#addBrand" prefHeight="25.0" prefWidth="94.0" text="Add Brand" visible="false" />
+                  <Label layoutX="22.0" layoutY="20.0" prefHeight="50.0" prefWidth="714.0" styleClass="lblHeader" text="Product Search">
                      <font>
-                        <Font size="16.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="127.0" text="Status" GridPane.rowIndex="1">
+                  <ComboBox fx:id="searchByCmbBox" layoutX="25.0" layoutY="97.0" prefHeight="34.0" prefWidth="182.0" />
+                  <TextField fx:id="searchText" layoutX="505.0" layoutY="97.0" onKeyTyped="#search" prefHeight="34.0" prefWidth="230.0" />
+                  <Label layoutX="767.0" layoutY="20.0" prefHeight="50.0" prefWidth="442.0" styleClass="lblHeader" text="Product Detail">
                      <font>
-                        <Font size="16.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="127.0" text="Filter Type" GridPane.rowIndex="2">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <Label maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="127.0" text="Type Detail" GridPane.rowIndex="3">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <Label maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="127.0" text="Primary Application" GridPane.rowIndex="4">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <Label maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="127.0" text="Height(mm)" GridPane.rowIndex="5">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <Label maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="127.0" text="Outer Diameter(mm)" GridPane.rowIndex="6">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <Label maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="127.0" text="Inner Diameter(mm)" GridPane.rowIndex="7">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <Label maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="127.0" text="Contains (pcs)" GridPane.rowIndex="9">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <Label maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="127.0" text="Volume (m3)" GridPane.rowIndex="10">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="sakuraNumber" maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="127.0" GridPane.columnIndex="1">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="volume" maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="127.0" GridPane.columnIndex="1" GridPane.rowIndex="10">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="containPeices" maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="127.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="innerDiameter" maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="127.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="outer" maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="127.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="height" maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="127.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="primaryApp" maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="127.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="typeDetail" maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="127.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="filterType" maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="127.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="status" maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="127.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                  </Label>
+                  <GridPane layoutX="773.0" layoutY="90.0" prefHeight="382.0" prefWidth="442.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="163.20001220703125" minWidth="10.0" prefWidth="163.20001220703125" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="140.79998779296875" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="321.6000122070312" minHeight="6.199993896484379" prefHeight="31.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="258.8" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="258.8" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="258.8" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="258.8" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="258.8" minHeight="0.0" prefHeight="31.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="258.8" minHeight="10.0" prefHeight="32.0000061035156" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="258.8" minHeight="10.0" prefHeight="32.79999389648435" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="258.8" minHeight="10.0" prefHeight="34.20001220703125" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="258.8" minHeight="10.0" prefHeight="27.600012207031227" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="258.8" minHeight="10.0" prefHeight="46.39996337890625" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="127.0" text="Fuji Number">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="127.0" text="Brand" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="127.0" text="Filter Type" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="127.0" text="Type Detail" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="127.0" text="Height" GridPane.rowIndex="4">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="127.0" text="Outer Diameter" GridPane.rowIndex="5">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="127.0" text="Inner Diameter" GridPane.rowIndex="6">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="127.0" text="Packging Per Carton" GridPane.rowIndex="9">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="127.0" text="Note" GridPane.rowIndex="10">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="sakuraNumber" maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="127.0" GridPane.columnIndex="1">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="note" maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="127.0" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="containPeices" maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="127.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="innerDiameter" maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="127.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="outer" maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="127.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="height" maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="127.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="thread" maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="127.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="typeDetail" maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="127.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="filterType" maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="127.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="brand" maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="127.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="50.0" prefWidth="170.0" text="Thread" GridPane.rowIndex="7">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </GridPane>
+                  <ScrollPane layoutX="771.0" layoutY="486.0" prefHeight="244.0" prefWidth="464.0" style="-fx-background-color: white;">
+                     <content>
+                        <HBox fx:id="imagePanel" alignment="CENTER" prefHeight="241.6" prefWidth="461.6" spacing="10.0" style="-fx-background-color: white;" />
+                     </content>
+                  </ScrollPane>
+                  <TableView fx:id="tableView" layoutX="22.0" layoutY="147.0" prefHeight="322.0" prefWidth="714.0">
+                    <columns>
+                      <TableColumn fx:id="columnOne" prefWidth="75.0" text="Fuji No #" />
+                      <TableColumn fx:id="columnTwo" prefWidth="137.5999755859375" text="Filter Type" />
+                        <TableColumn fx:id="columnThree" prefWidth="155.2" text="Type Detail" />
+                        <TableColumn fx:id="columnFour" minWidth="0.0" prefWidth="176.5" text="Primary Application" />
+                    </columns>
+                  </TableView>
+                  <TableView fx:id="refTableView" layoutX="25.0" layoutY="486.0" prefHeight="244.0" prefWidth="714.0">
+                     <columns>
+                        <TableColumn fx:id="refColumnOne" prefWidth="335.20002365112305" text="Reference #" />
+                        <TableColumn fx:id="refColumnTwo" prefWidth="378.3999328613281" text="Manufacturer" />
+                     </columns>
+                  </TableView>
+                      <Button layoutX="398.0" layoutY="97.0" mnemonicParsing="false" onAction="#addReference" prefHeight="31.0" prefWidth="94.0" text="Add Reference" />
+                  <Button layoutX="300.0" layoutY="97.0" mnemonicParsing="false" onAction="#printData" prefHeight="33.0" prefWidth="91.0" text="Print" />
                </children>
-            </GridPane>
-            <ScrollPane layoutX="771.0" layoutY="486.0" prefHeight="244.0" prefWidth="464.0" style="-fx-background-color: white;">
-               <content>
-                  <HBox fx:id="imagePanel" alignment="CENTER" prefHeight="241.6" prefWidth="461.6" spacing="10.0" style="-fx-background-color: white;" />
-               </content>
-            </ScrollPane>
-            <TableView fx:id="tableView" layoutX="22.0" layoutY="147.0" prefHeight="322.0" prefWidth="714.0">
-              <columns>
-                <TableColumn fx:id="columnOne" prefWidth="75.0" text="Fuji No #" />
-                <TableColumn fx:id="columnTwo" prefWidth="137.5999755859375" text="Filter Type" />
-                  <TableColumn fx:id="columnThree" prefWidth="155.2" text="Type Detail" />
-                  <TableColumn fx:id="columnFour" minWidth="0.0" prefWidth="176.5" text="Primary Application" />
-              </columns>
-            </TableView>
-            <TableView fx:id="refTableView" layoutX="25.0" layoutY="486.0" prefHeight="244.0" prefWidth="714.0">
-               <columns>
-                  <TableColumn fx:id="refColumnOne" prefWidth="335.20002365112305" text="Reference #" />
-                  <TableColumn fx:id="refColumnTwo" prefWidth="378.3999328613281" text="Manufacturer" />
-               </columns>
-            </TableView>
-                <Button layoutX="398.0" layoutY="97.0" mnemonicParsing="false" onAction="#addReference" text="Add Reference" />
-         </children>
-      </AnchorPane>
+            </AnchorPane>
+         </center>
+      </BorderPane>
    </content>
 </ScrollPane>

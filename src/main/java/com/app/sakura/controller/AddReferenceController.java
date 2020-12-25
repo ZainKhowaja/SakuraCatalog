@@ -69,6 +69,7 @@ public class AddReferenceController {
             productReference.setProduct(productRepository.findBySakuraNo(fujiNo.getText()));
             if(productReferenceRepository.save(productReference).getId() != null){
                 AlertUtil.showInfo(String.format("Reference Added for fuji no : %s",fujiNo.getText()));
+                exit(null);
             }
         }
     }

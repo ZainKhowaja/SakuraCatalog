@@ -77,11 +77,11 @@ public class MainController {
 			if(event.getSource().equals(addProductTab)) {
 				addProductTab.setContent(screen.getFXMLNode(SakuraScreen.ADD_PRODUCT));
 //				tabPane.setPrefHeight(664);
-				mainPane.setPrefHeight(626);
+//				mainPane.setPrefHeight(626);
 //				borderPane.setPrefSize(borderPane.getPrefWidth(), 664);
 			}else if(event.getSource().equals(productSearchTab)) {
-				tabPane.setPrefHeight(900);
-				mainPane.setPrefHeight(900);
+//				tabPane.setPrefHeight(900);
+//				mainPane.setPrefHeight(900);
 //				borderPane.setPrefSize(borderPane.getPrefWidth(), 1000);
 				productSearchTab.setContent(screen.getFXMLNode(SakuraScreen.PRODUCT_SEARCH));
 				

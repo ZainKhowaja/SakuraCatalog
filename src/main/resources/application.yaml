@@ -16,6 +16,13 @@ config:
   phone: 03322620831
   alert: false
 
+#jasypt:
+#  encryptor:
+#    password: rahim123
+
+test: ENC(QfqFgLDYoertMPuIpcXaRA==)
+connect: @con.ver@
+
 mailjet:
   apiKey: 6029fe5c65913ed9995048b29868428d
   apiSecret: 43d336cb7207d083074a240da925ef13

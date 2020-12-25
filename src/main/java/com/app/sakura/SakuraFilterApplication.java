@@ -1,6 +1,7 @@
 package com.app.sakura;
 
 import com.sun.javafx.application.LauncherImpl;
+import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,6 +16,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @EnableScheduling
+@EnableEncryptableProperties
 @SpringBootApplication
 public class SakuraFilterApplication extends Application {
 

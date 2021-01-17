@@ -66,7 +66,7 @@ public class AddReferenceController {
             ProductReference productReference = new ProductReference();
             productReference.setManufacturer(brandType.getSelectionModel().getSelectedItem());
             productReference.setReference(refNo.getText());
-            productReference.setProduct(productRepository.findBySakuraNo(fujiNo.getText()));
+            productReference.setProduct(productRepository.findBySakuraNoAndActive(fujiNo.getText(),0));
             if(productReferenceRepository.save(productReference).getId() != null){
                 AlertUtil.showInfo(String.format("Reference Added for fuji no : %s",fujiNo.getText()));
 //                exit(null);

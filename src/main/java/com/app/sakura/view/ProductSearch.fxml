@@ -16,7 +16,7 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="searchByCmbBox" layoutX="25.0" layoutY="97.0" prefHeight="34.0" prefWidth="182.0" />
+                  <ComboBox fx:id="searchByCmbBox" layoutX="25.0" layoutY="97.0" prefHeight="34.0" prefWidth="153.0" />
                   <TextField fx:id="searchText" layoutX="505.0" layoutY="97.0" onKeyTyped="#search" prefHeight="34.0" prefWidth="230.0" />
                   <Label layoutX="767.0" layoutY="20.0" prefHeight="50.0" prefWidth="442.0" styleClass="lblHeader" text="Product Detail">
                      <font>
@@ -187,6 +187,7 @@
                   </TableView>
                       <Button layoutX="398.0" layoutY="97.0" mnemonicParsing="false" onAction="#addReference" prefHeight="31.0" prefWidth="94.0" text="Add Reference" />
                   <Button layoutX="300.0" layoutY="97.0" mnemonicParsing="false" onAction="#printData" prefHeight="33.0" prefWidth="91.0" text="Print" />
+                  <Button layoutX="201.0" layoutY="98.0" mnemonicParsing="false" onAction="#deleteProduct" prefHeight="33.0" prefWidth="91.0" text="Delete" />
                </children>
             </AnchorPane>
          </top>

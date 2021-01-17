@@ -10,12 +10,15 @@ import com.mailjet.client.ClientOptions;
 import com.mailjet.client.resource.Emailv31;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Optional;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+
+import javax.swing.text.html.Option;
 
 @Service
 public class EmailServiceImpl implements EmailService {
@@ -60,7 +63,7 @@ public class EmailServiceImpl implements EmailService {
 		} catch (MailjetException | MailjetSocketTimeoutException e) {
 			e.printStackTrace();
 		}
-	    System.out.println(response.getStatus());
-	    System.out.println(response.getData());
+//	    System.out.println(Optional.ofNullable(response.getStatus()));
+//	    System.out.println(Optional.ofNullable(response.getData()));
 	}
 }

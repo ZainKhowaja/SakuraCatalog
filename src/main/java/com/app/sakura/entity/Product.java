@@ -37,6 +37,14 @@ public class Product {
     @Column(name = "active")
     private int active;
 
+    public int getActive() {
+        return active;
+    }
+
+    public void setActive(int active) {
+        this.active = active;
+    }
+
     public ProductDetail getProductDetail() {
         return productDetail;
     }

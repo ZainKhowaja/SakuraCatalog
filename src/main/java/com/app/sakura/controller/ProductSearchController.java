@@ -204,9 +204,11 @@ public class ProductSearchController {
 		tableView.setItems(sortedData);
 
 		tableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-			newSelection.getColumnOne();
-			String sakuraId = isReferenceSelected() ? newSelection.getColumnThree() : newSelection.getColumnOne();
-			loadDetails(sakuraId);
+			if(newSelection != null) {
+				newSelection.getColumnOne();
+				String sakuraId = isReferenceSelected() ? newSelection.getColumnThree() : newSelection.getColumnOne();
+				loadDetails(sakuraId);
+			}
 		});
 
 	}
@@ -230,7 +232,7 @@ public class ProductSearchController {
 //		response.add(product1);
 //		response.add(product2);
 		if (isReferenceSelected()) {
-			for (ProductReference product : productReferenceRepository.findAll()) {
+			for (ProductReference product : productReferenceRepository.findByProductActive(0)) {
 				SearchProduct searchProduct = new SearchProduct();
 				
 				searchProduct.setColumnOne(product.getReference());
@@ -240,7 +242,7 @@ public class ProductSearchController {
 				response.add(searchProduct);
 			}
 		} else {
-			for (Product product : productRepository.findAll()) {
+			for (Product product : productRepository.findByActive(0)) {
 				SearchProduct searchProduct = new SearchProduct();
 
 				searchProduct.setColumnOne(product.getSakuraNo());
@@ -290,7 +292,7 @@ public class ProductSearchController {
 	}
 
 	private void loadDetails(String sakuraId) {
-		Product product = productRepository.findBySakuraNo(sakuraId);
+		Product product = productRepository.findBySakuraNoAndActive(sakuraId,0);
 		sakuraNumber.setText(product.getSakuraNo());
 		brand.setText(product.getManufacturer().getName());
 		filterType.setText(product.getFilter().getName());
@@ -409,7 +411,7 @@ public class ProductSearchController {
 				imageUrl = productImage.get().getImageUrl();
 			}
 			
-			Product product = productRepository.findBySakuraNo(sakuraId);
+			Product product = productRepository.findBySakuraNoAndActive(sakuraId,0);
 			
 			PrintProductDetailsBuilder builder = PrintProductDetailsBuilder.newBuilder();
 			builder
@@ -440,5 +442,20 @@ public class ProductSearchController {
 		}
 		
 		
+	}
+
+	public void deleteProduct(){
+		if(tableView.getSelectionModel().getSelectedItem() != null) {
+			String sakuraNo = isReferenceSelected() ?
+					tableView.getSelectionModel().getSelectedItem().getColumnThree() :
+					tableView.getSelectionModel().getSelectedItem().getColumnOne();
+			
+			productRepository.deleteProduct(sakuraNo);
+			AlertUtil.showInfo(String.format("%s deleted successfully",sakuraNo));
+			updateTable();
+
+		}else {
+			AlertUtil.showError("Select any item to delete");
+		}
 	}
 }

@@ -20,11 +20,11 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> getProductBySakuraNoLike(String sakuraNo) {
-        return productRepository.findBySakuraNoLike(sakuraNo);
+        return productRepository.findBySakuraNoLikeAndActive(sakuraNo,0);
     }
 
     @Override
     public List<Product> getProductByRefrenceNoLike(String refrenceNo) {
-        return productRepository.findByRefrenceNoLike(refrenceNo);
+        return productRepository.findByRefrenceNoLikeAndActive(refrenceNo,0);
     }
 }

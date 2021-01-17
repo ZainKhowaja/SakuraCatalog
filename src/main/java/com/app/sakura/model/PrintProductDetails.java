@@ -11,6 +11,8 @@ public class PrintProductDetails {
     private String height;
     private String innerD;
     private String outerD;
+    private String innerSecD;
+    private String outerSecD;
     private String packagingPerCaton;
     private String thread;
     private String note;
@@ -25,6 +27,8 @@ public class PrintProductDetails {
         this.height = builder.height;
         this.innerD = builder.innerD;
         this.outerD = builder.outerD;
+        this.innerSecD = builder.innerSecD;
+        this.outerSecD = builder.outerSecD;
         this.packagingPerCaton = builder.packagingPerCaton;
         this.thread = builder.thread;
         this.note = builder.note;
@@ -72,6 +76,14 @@ public class PrintProductDetails {
         return note;
     }
 
+    public String getInnerSecD() {
+        return innerSecD;
+    }
+
+    public String getOuterSecD() {
+        return outerSecD;
+    }
+
     public String getImageName() {
         return imageName;
     }
@@ -89,6 +101,8 @@ public class PrintProductDetails {
         private String height;
         private String innerD;
         private String outerD;
+        private String innerSecD;
+        private String outerSecD;
         private String packagingPerCaton;
         private String thread;
         private String note;
@@ -164,6 +178,16 @@ public class PrintProductDetails {
 
         public PrintProductDetailsBuilder addReference(String reference, String brand) {
             this.reference.put(reference,brand);
+            return this;
+        }
+
+        public PrintProductDetailsBuilder setInnerSecD(String innerSecD) {
+            this.innerSecD = innerSecD;
+            return this;
+        }
+
+        public PrintProductDetailsBuilder setOuterSecD(String outerSecD) {
+            this.outerSecD = outerSecD;
             return this;
         }
 

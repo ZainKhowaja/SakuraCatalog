@@ -33,6 +33,18 @@ public class ProductDetail implements Serializable {
     @Column(name = "inner_measurement")
     private String innerMeasurement;
 
+    @Column(name = "out_sec_dm")
+    private String outSecDiameter;
+
+    @Column(name = "outer_sec_measurement")
+    private String outerSecMeasurement;
+
+    @Column(name = "inner_sec_dm")
+    private String innerSecDiameter;
+
+    @Column(name = "inner_sec_measurement")
+    private String innerSecMeasurement;
+
     @Column(name = "contains")
     private String contains;
 
@@ -128,5 +140,37 @@ public class ProductDetail implements Serializable {
 
     public void setNote(String note) {
         this.note = note;
+    }
+
+    public String getOutSecDiameter() {
+        return outSecDiameter;
+    }
+
+    public void setOutSecDiameter(String outSecDiameter) {
+        this.outSecDiameter = outSecDiameter;
+    }
+
+    public String getOuterSecMeasurement() {
+        return outerSecMeasurement;
+    }
+
+    public void setOuterSecMeasurement(String outerSecMeasurement) {
+        this.outerSecMeasurement = outerSecMeasurement;
+    }
+
+    public String getInnerSecDiameter() {
+        return innerSecDiameter;
+    }
+
+    public void setInnerSecDiameter(String innerSecDiameter) {
+        this.innerSecDiameter = innerSecDiameter;
+    }
+
+    public String getInnerSecMeasurement() {
+        return innerSecMeasurement;
+    }
+
+    public void setInnerSecMeasurement(String innerSecMeasurement) {
+        this.innerSecMeasurement = innerSecMeasurement;
     }
 }

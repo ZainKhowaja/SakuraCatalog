@@ -41,7 +41,7 @@ public class DataValidatorImpl implements DataValidator {
     }
 
     @Override
-    public boolean validateGenericAdd(String fieldData, AddGenericeController.AddWindowType windowType, Filter selectedItem) {
+    public boolean validateGenericAdd(String fieldData, AddGenericeController.AddWindowType windowType, Filter selectedItem, Integer filterId) {
         boolean isValidated = true;
         String msg = "";
         if (fieldData.isEmpty() || fieldData.equalsIgnoreCase("")) {
@@ -51,7 +51,7 @@ public class DataValidatorImpl implements DataValidator {
             msg = "Select Filter Type";
             isValidated = false;
         } else {
-            isValidated = checkDuplicateEntry(fieldData, windowType);
+            isValidated = checkDuplicateEntry(fieldData, windowType, filterId);
             msg = isValidated ? "" : "Already Exists";
         }
         if (!isValidated) {
@@ -62,14 +62,16 @@ public class DataValidatorImpl implements DataValidator {
 
     }
 
-    private boolean checkDuplicateEntry(String fieldData, AddGenericeController.AddWindowType windowType) {
+    private boolean checkDuplicateEntry(String fieldData, AddGenericeController.AddWindowType windowType, Integer filterId) {
         switch (windowType) {
             case FILTER:
                 return filterRepository.findAll().stream().filter(x -> x.getName().equalsIgnoreCase(fieldData)).count() == 0;
             case MANUFACTURER:
                 return manufacturerRepository.findAll().stream().filter(x -> x.getName().equalsIgnoreCase(fieldData)).count() == 0;
             case TYPE_DETAIL:
-                return typeDetailRepository.findAll().stream().filter(x -> x.getName().equalsIgnoreCase(fieldData)).count() == 0;
+                return typeDetailRepository.findAll().stream()
+                        .filter(x -> x.getId() == filterId)
+                        .filter(x -> x.getName().equalsIgnoreCase(fieldData)).count() == 0;
         }
         return false;
     }

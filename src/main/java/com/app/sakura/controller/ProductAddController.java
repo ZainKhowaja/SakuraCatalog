@@ -82,6 +82,12 @@ public class ProductAddController {
 	private Spinner<Double> outerD;
 
 	@FXML
+	private Spinner<Double> innerDSec;
+
+	@FXML
+	private Spinner<Double> outerDSec;
+
+	@FXML
 	private TextField note;
 
 	@FXML
@@ -92,6 +98,12 @@ public class ProductAddController {
 
 	@FXML
 	private ComboBox<String> outerM;
+
+	@FXML
+	private ComboBox<String> outerSecM;
+
+	@FXML
+	private ComboBox<String> innerSecM;
 
 
 	@Autowired
@@ -274,11 +286,15 @@ public class ProductAddController {
 		productDetail.setHeight(height.getEditor().getText());
 		productDetail.setOutDiameter(outerD.getEditor().getText());
 		productDetail.setInnerDiameter(innerD.getEditor().getText());
+		productDetail.setOutSecDiameter(outerDSec.getEditor().getText());
+		productDetail.setInnerSecDiameter(innerDSec.getEditor().getText());
 		productDetail.setContains(contains.getEditor().getText());
 		productDetail.setThread(thread.getEditor().getText());
 		productDetail.setHeightMeasurement(heightM.getSelectionModel().getSelectedItem());
 		productDetail.setOuterMeasurement(outerM.getSelectionModel().getSelectedItem());
 		productDetail.setInnerMeasurement(innerM.getSelectionModel().getSelectedItem());
+		productDetail.setOuterSecMeasurement(outerSecM.getSelectionModel().getSelectedItem());
+		productDetail.setInnerSecMeasurement(innerSecM.getSelectionModel().getSelectedItem());
 		productDetail.setNote(note.getText());
 
 		product.setProductDetail(productDetail);

@@ -78,7 +78,11 @@ public class AddGenericeController {
     @FXML
     public void addData() {
         String filedData = textValue.getText().trim();
-        if(!dataValidator.validateGenericAdd(filedData,windowType,filterCombo.getSelectionModel().getSelectedItem())){
+        Integer filterId = null;
+        if(windowType == AddWindowType.TYPE_DETAIL){
+            filterId = filterCombo.getSelectionModel().getSelectedItem().getId();
+        }
+        if(!dataValidator.validateGenericAdd(filedData,windowType,filterCombo.getSelectionModel().getSelectedItem(),filterId)){
             return;
         }
         if (windowType == AddWindowType.FILTER) {

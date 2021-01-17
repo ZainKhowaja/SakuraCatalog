@@ -100,6 +100,12 @@ public class ProductSearchController {
 	private Label outer;
 
 	@FXML
+	private Label outerDSec;
+
+	@FXML
+	private Label innerDSec;
+
+	@FXML
 	private Label height;
 
 	@FXML
@@ -293,6 +299,8 @@ public class ProductSearchController {
 		height.setText(product.getProductDetail().getHeight() + " " + product.getProductDetail().getHeightMeasurement());
 		outer.setText(product.getProductDetail().getOutDiameter() + " " + product.getProductDetail().getOuterMeasurement());
 		innerDiameter.setText(product.getProductDetail().getInnerDiameter() + " " + product.getProductDetail().getInnerMeasurement());
+		outerDSec.setText(product.getProductDetail().getOutSecDiameter() + " " + product.getProductDetail().getOuterSecMeasurement());
+		innerDSec.setText(product.getProductDetail().getInnerSecDiameter() + " " + product.getProductDetail().getInnerSecMeasurement());
 
 		containPeices.setText(product.getProductDetail().getContains());
 		note.setText(product.getProductDetail().getNote());
@@ -408,10 +416,12 @@ public class ProductSearchController {
 			.setFilter(product.getFilter().getName())
 			.setFujiNo(product.getSakuraNo())
 			.setHeight(product.getProductDetail().getHeight())
-			.setInnerD(product.getProductDetail().getInnerDiameter())
+			.setInnerD(product.getProductDetail().getInnerDiameter() + " " + product.getProductDetail().getInnerMeasurement())
 			.setManufacturer(product.getManufacturer().getName())
 			.setNote(product.getProductDetail().getNote())
-			.setOuterD(product.getProductDetail().getOutDiameter())
+			.setOuterD(product.getProductDetail().getOutDiameter() + " " + product.getProductDetail().getOuterMeasurement())
+			.setOuterSecD(product.getProductDetail().getOutSecDiameter() + " " + product.getProductDetail().getOuterSecMeasurement())
+			.setInnerSecD(product.getProductDetail().getInnerSecDiameter() + " " + product.getProductDetail().getInnerSecMeasurement() )
 			.setPackagingPerCaton(product.getProductDetail().getContains())
 			.setReference(reference)
 			.setThread(product.getProductDetail().getThread())

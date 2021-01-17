@@ -59,21 +59,26 @@
             <RowConstraints maxHeight="317.6000244140625" minHeight="10.0" prefHeight="47.800024414062506" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="317.6000244140625" minHeight="10.0" prefHeight="53.39996337890625" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="317.6000244140625" minHeight="10.0" prefHeight="51.00003662109373" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="317.6000244140625" minHeight="10.0" prefHeight="30.40001220703124" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="317.6000244140625" minHeight="10.0" prefHeight="51.40001220703124" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="317.6000244140625" minHeight="10.0" prefHeight="51.40001220703124" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
             <Label alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="106.0" text="Height" />
             <Label alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="100.0" text="Outer D" GridPane.rowIndex="1" />
             <Label alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="100.0" text="Inner D" GridPane.rowIndex="2" />
-            <Label alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="100.0" text="Packging Per Carton" GridPane.rowIndex="3" />
-            <Label alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="100.0" text="Thread" GridPane.rowIndex="4" />
-            <Label alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="100.0" text="Note" GridPane.rowIndex="5" />
+            <Label alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="100.0" text="Packging Per Carton" GridPane.rowIndex="5" />
+            <Label alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="100.0" text="Thread" GridPane.rowIndex="6" />
+            <Label alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="100.0" text="Note" GridPane.rowIndex="7" />
             <Spinner fx:id="innerD" editable="true" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Spinner fx:id="height" editable="true" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" />
-            <Spinner fx:id="thread" editable="true" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Spinner fx:id="contains" editable="true" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Spinner fx:id="thread" editable="true" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Spinner fx:id="contains" editable="true" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <Spinner fx:id="outerD" editable="true" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="note" prefHeight="30.0" prefWidth="185.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextField fx:id="note" prefHeight="30.0" prefWidth="185.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <Label alignment="BOTTOM_LEFT" prefHeight="33.0" prefWidth="118.0" text="Outer D Secondary" GridPane.rowIndex="3" />
+            <Spinner fx:id="outerDSec" editable="true" prefHeight="28.0" prefWidth="185.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Spinner fx:id="innerDSec" editable="true" prefHeight="29.0" prefWidth="185.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label alignment="BOTTOM_LEFT" prefHeight="37.0" prefWidth="118.0" text="Inner D Secondary" GridPane.rowIndex="4" />
          </children>
       </GridPane>
       <ScrollPane hbarPolicy="NEVER" layoutX="851.0" layoutY="81.0" prefHeight="380.0" prefWidth="378.0" style="-fx-background-color: white;">
@@ -89,7 +94,7 @@
       <Label fx:id="addFilter" layoutX="358.0" layoutY="127.0" onMouseClicked="#openAddFilter" prefHeight="37.0" prefWidth="37.0" styleClass="addBtn" />
       <Label fx:id="addMan" layoutX="358.0" layoutY="172.0" onMouseClicked="#openAddMan" prefHeight="37.0" prefWidth="37.0" styleClass="addBtn" />
       <Label fx:id="addType" layoutX="358.0" layoutY="220.0" onMouseClicked="#openAddType" prefHeight="37.0" prefWidth="37.0" styleClass="addBtn" />
-      <ComboBox fx:id="heightM" layoutX="730.0" layoutY="91.0" prefHeight="26.0" prefWidth="73.0" value="mm">
+      <ComboBox fx:id="heightM" layoutX="730.0" layoutY="84.0" prefHeight="26.0" prefWidth="73.0" value="mm">
          <items>
             <FXCollections fx:factory="observableArrayList">
                <String fx:value="mm" />
@@ -97,7 +102,7 @@
             </FXCollections>
          </items>
       </ComboBox>
-      <ComboBox fx:id="outerM" layoutX="730.0" layoutY="136.0" prefHeight="26.0" prefWidth="73.0" value="mm">
+      <ComboBox fx:id="outerM" layoutX="730.0" layoutY="125.0" prefHeight="26.0" prefWidth="73.0" value="mm">
          <items>
             <FXCollections fx:factory="observableArrayList">
                <String fx:value="mm" />
@@ -105,7 +110,25 @@
             </FXCollections>
          </items>
       </ComboBox>
-      <ComboBox fx:id="innerM" layoutX="730.0" layoutY="190.0" prefHeight="26.0" prefWidth="73.0" value="mm">
+      <ComboBox fx:id="innerM" layoutX="730.0" layoutY="164.0" prefHeight="26.0" prefWidth="73.0" value="mm">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:value="mm" />
+               <String fx:value="inch" />
+            </FXCollections>
+         </items>
+      </ComboBox>
+
+      <ComboBox fx:id="innerSecM" layoutX="730.0" layoutY="244.0" prefHeight="26.0" prefWidth="73.0" value="mm">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:value="mm" />
+               <String fx:value="inch" />
+            </FXCollections>
+         </items>
+      </ComboBox>
+
+      <ComboBox fx:id="outerSecM" layoutX="730.0" layoutY="204.0" prefHeight="26.0" prefWidth="73.0" value="mm">
          <items>
             <FXCollections fx:factory="observableArrayList">
                <String fx:value="mm" />

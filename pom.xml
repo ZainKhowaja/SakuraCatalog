@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>com.app.sakura</groupId>
 	<artifactId>FujiFilter</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<name>Fuji Filter</name>
 	<description>Fuji Filter Product Catalog</description>
 

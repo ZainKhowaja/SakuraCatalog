@@ -15,6 +15,7 @@ import com.app.sakura.enums.SakuraScreen;
 import com.app.sakura.repository.*;
 import com.app.sakura.service.DataValidator;
 import com.app.sakura.util.AlertUtil;
+import com.app.sakura.util.FileUtil;
 import com.app.sakura.util.ScreenUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -254,7 +255,7 @@ public class ProductAddController {
 		if (filePath != null && filePath.size() > 0) {
 			for(File file : filePath) {
 				ProductImage image = new ProductImage();
-				image.setImageUrl(file.getAbsolutePath());
+				image.setImageUrl(FileUtil.copyFile(file.getAbsolutePath()));
 				image.setProduct(product);
 				productImageRepository.save(image);
 			}

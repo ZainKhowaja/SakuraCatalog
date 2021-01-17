@@ -28,12 +28,14 @@ public class SakuraFilterApplication extends Application {
     public boolean enableAuth;
 
     public static void main(String[] args) {
+
         LauncherImpl.launchApplication(SakuraFilterApplication.class,SplashScreen.class,args);
         if (new SakuraFilterApplication().appAuthentication()) {
             launch(args);
         }else{
             System.out.println("APP NOT AUTHENTICATED");
         }
+
         System.exit(-1);
     }
 

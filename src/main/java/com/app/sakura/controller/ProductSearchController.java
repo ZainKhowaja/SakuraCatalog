@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -419,10 +420,11 @@ public class ProductSearchController {
 				
 			try {
 				printerService.printProductDetails(builder.build());
-			} catch (IOException | PrinterException e) {
+			} catch (IOException | PrinterException | URISyntaxException e) {
 				AlertUtil.showError("Error Printing Data");
+				e.printStackTrace();
 			}
-			
+
 		}else {
 			AlertUtil.showError("Select any item");
 		}

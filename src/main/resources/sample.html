@@ -1,0 +1,104 @@
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        table {
+            border: 1px solid black;
+            float:left;
+            margin-left: 5px;
+            position:relative
+        }
+        td{
+            font-size:12px;
+        }
+        .value {
+            padding:0px 0px 0px 0px;
+            font-weight: bold;
+        }
+        .key{
+            width:40%;
+        }
+        .ref-head-value {
+            padding:0px 0px 0px 70px;
+        }
+
+        .man {
+            padding:0px 0px 0px 70px;
+            font-weight: bold;
+        }
+        .ref {
+            font-weight: bold;
+        }
+        img{
+            border: 1px solid black;
+            position:absolute;
+            width:54%;
+            top: 270px;
+            margin-left: 5px;
+        }
+        #over img {
+            margin-left: 5px;
+            margin-right:auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<h2>FUJI FILTER PRODUCTS CATALOGUE</h2>
+<table width="55%">
+    <tr>
+        <td class="key">Fuji No:</td>
+        <td class="value">{fujiNo}</td>
+    </tr>
+    <tr>
+        <td class="key">Filter:</td>
+        <td class="value">{filter}</td>
+    </tr>
+    <tr>
+        <td class="key">Brand:</td>
+        <td class="value">{brand}</td>
+    </tr>
+    <tr>
+        <td class="key">Type Details:</td>
+        <td class="value">{type}</td>
+    </tr>
+    <tr>
+        <td class="key">Height Diameter:</td>
+        <td class="value">{height}</td>
+    </tr>
+    <tr>
+        <td class="key">Outer Diameter:</td>
+        <td class="value">{outer}</td>
+    </tr>
+    <tr>
+        <td class="key">Inner Diameter:</td>
+        <td class="value">{inner}</td>
+    </tr>
+    <tr>
+        <td class="key">Packaging Per Carton:</td>
+        <td class="value">{pack}</td>
+    </tr>
+    <tr>
+        <td class="key">Thread:</td>
+        <td class="value">{thread}</td>
+    </tr>
+    <tr>
+        <td class="key">Note:</td>
+        <td class="value">{note}</td>
+    </tr>
+</table>
+<table width="44%">
+    <tr>
+        <td class="key">Reference #</td>
+        <td class="ref-head-value">Manufacturer</td>
+    </tr>
+    </ref>
+</table>
+<div>
+<img src="{imagePath}"/>
+</div>
+</body>
+
+</html>

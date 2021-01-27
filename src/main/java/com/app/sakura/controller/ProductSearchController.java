@@ -446,13 +446,15 @@ public class ProductSearchController {
 
 	public void deleteProduct(){
 		if(tableView.getSelectionModel().getSelectedItem() != null) {
-			String sakuraNo = isReferenceSelected() ?
-					tableView.getSelectionModel().getSelectedItem().getColumnThree() :
-					tableView.getSelectionModel().getSelectedItem().getColumnOne();
-			
-			productRepository.deleteProduct(sakuraNo);
-			AlertUtil.showInfo(String.format("%s deleted successfully",sakuraNo));
-			updateTable();
+			if(AlertUtil.showDeleteConfirmation()) {
+				String sakuraNo = isReferenceSelected() ?
+						tableView.getSelectionModel().getSelectedItem().getColumnThree() :
+						tableView.getSelectionModel().getSelectedItem().getColumnOne();
+
+				productRepository.deleteProduct(sakuraNo);
+				AlertUtil.showInfo(String.format("%s deleted successfully", sakuraNo));
+				updateTable();
+			}
 
 		}else {
 			AlertUtil.showError("Select any item to delete");

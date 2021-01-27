@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
@@ -16,11 +17,27 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
+                  <Label alignment="CENTER" layoutX="387.0" layoutY="99.0" onMouseClicked="#addReference" prefHeight="33.0" prefWidth="113.0" style="-fx-border-color: black; -fx-border-width: 2;" text="Add Reference">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
                   <ComboBox fx:id="searchByCmbBox" layoutX="25.0" layoutY="97.0" prefHeight="34.0" prefWidth="153.0" />
-                  <TextField fx:id="searchText" layoutX="505.0" layoutY="97.0" onKeyTyped="#search" prefHeight="34.0" prefWidth="230.0" />
+                  <TextField fx:id="searchText" layoutX="511.0" layoutY="97.0" onKeyTyped="#search" prefHeight="34.0" prefWidth="224.0" />
                   <Label layoutX="767.0" layoutY="20.0" prefHeight="50.0" prefWidth="442.0" styleClass="lblHeader" text="Product Detail">
                      <font>
                         <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="1080.0" layoutY="27.0" onMouseClicked="#printData" prefHeight="31.0" prefWidth="126.0" style="-fx-border-color: black; -fx-border-width: 2;" text="Print">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font size="14.0" />
                      </font>
                   </Label>
                   <GridPane layoutX="773.0" layoutY="90.0" prefHeight="382.0" prefWidth="442.0">
@@ -185,9 +202,22 @@
                         <TableColumn fx:id="refColumnTwo" prefWidth="378.3999328613281" text="Manufacturer" />
                      </columns>
                   </TableView>
-                      <Button layoutX="398.0" layoutY="97.0" mnemonicParsing="false" onAction="#addReference" prefHeight="31.0" prefWidth="94.0" text="Add Reference" />
-                  <Button layoutX="300.0" layoutY="97.0" mnemonicParsing="false" onAction="#printData" prefHeight="33.0" prefWidth="91.0" text="Print" />
-                  <Button layoutX="201.0" layoutY="98.0" mnemonicParsing="false" onAction="#deleteProduct" prefHeight="33.0" prefWidth="91.0" text="Delete" />
+                  <Label alignment="CENTER" layoutX="189.0" layoutY="99.0" onMouseClicked="#deleteProduct" prefHeight="33.0" prefWidth="91.0" style="-fx-border-color: black; -fx-border-width: 2;" text="Delete">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="288.0" layoutY="99.0" prefHeight="33.0" prefWidth="91.0" style="-fx-border-color: black; -fx-border-width: 2;" text="Update">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
          </top>

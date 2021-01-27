@@ -14,7 +14,7 @@ config:
   email: zainnoushad@yahoo.com
   emailName: Zain
   phone: 03322620831
-  alert: true
+  alert: false
 
 #jasypt:
 #  encryptor:

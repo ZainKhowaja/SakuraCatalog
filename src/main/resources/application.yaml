@@ -26,3 +26,6 @@ connect: @con.ver@
 mailjet:
   apiKey: 6029fe5c65913ed9995048b29868428d
   apiSecret: 43d336cb7207d083074a240da925ef13
+
+app:
+  auth: false

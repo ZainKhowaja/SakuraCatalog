@@ -7,7 +7,7 @@ public class AlertUtil {
 
     private static final Alert infoAlert = new Alert(Alert.AlertType.INFORMATION);
     private static final Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
-    private static final Alert errorAlert = new Alert(Alert.AlertType.ERROR,"Delete Item", ButtonType.YES, ButtonType.NO);
+    private static final Alert errorAlert = new Alert(Alert.AlertType.ERROR);
 
     public static void showError(String message) {
         errorAlert.setGraphic(null);

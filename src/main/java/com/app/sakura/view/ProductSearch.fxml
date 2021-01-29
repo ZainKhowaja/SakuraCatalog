@@ -210,7 +210,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="288.0" layoutY="99.0" prefHeight="33.0" prefWidth="91.0" style="-fx-border-color: black; -fx-border-width: 2;" text="Update">
+                  <Label alignment="CENTER" layoutX="288.0" layoutY="99.0" onMouseClicked="#updateProduct" prefHeight="33.0" prefWidth="91.0" style="-fx-border-color: black; -fx-border-width: 2;" text="Update">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>

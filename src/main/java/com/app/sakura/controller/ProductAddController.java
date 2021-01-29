@@ -7,7 +7,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import com.app.sakura.entity.*;
@@ -22,6 +24,7 @@ import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Component;
@@ -36,6 +39,10 @@ import javafx.stage.FileChooser;
 
 @Component
 public class ProductAddController {
+
+	public static boolean isUpdate;
+	public static Product product;
+
 	@FXML
 	private ResourceBundle resources;
 
@@ -145,8 +152,8 @@ public class ProductAddController {
 	private List<File> filePath;
 
 	@FXML
-	void exit(MouseEvent event) {
-		System.exit(0);
+	void exit() {
+		((Stage) ((Node) sakuraId).getScene().getWindow()).close();;
 	}
 
 	@FXML
@@ -164,13 +171,49 @@ public class ProductAddController {
 	}
 
 	@FXML
-	void initialize() {
+	void initialize() throws FileNotFoundException {
 		loadAddButton();
 		loadFilterType();
 		loadManfacturers();
-		loadTypeDetails();
 		filePath = new ArrayList<>();
+
+		if(isUpdate && product.getSakuraNo() != null){
+			fillProductDetails(product);
+		}
+		loadTypeDetails();
 	}
+
+	private void fillProductDetails(Product product) throws FileNotFoundException {
+		sakuraId.setText(product.getSakuraNo());
+		sakuraId.setEditable(false);
+		filterType.getSelectionModel().select(product.getTypeDetail().getFilter());
+		typeDetails.getSelectionModel().select(product.getTypeDetail());
+		manufacturer.getSelectionModel().select(product.getManufacturer());
+		height.getEditor().setText(product.getProductDetail().getHeight());
+		heightM.getSelectionModel().select(Optional.ofNullable(product.getProductDetail().getHeightMeasurement()).orElse("mm"));
+
+		outerD.getEditor().setText(product.getProductDetail().getOutDiameter());
+		outerM.getSelectionModel().select(Optional.ofNullable(product.getProductDetail().getOuterMeasurement()).orElse("mm"));
+
+		innerD.getEditor().setText(product.getProductDetail().getInnerDiameter());
+		innerM.getSelectionModel().select(Optional.ofNullable(product.getProductDetail().getInnerMeasurement()).orElse("mm"));
+
+		innerDSec.getEditor().setText(product.getProductDetail().getInnerSecDiameter());
+		innerSecM.getSelectionModel().select(Optional.ofNullable(product.getProductDetail().getInnerSecMeasurement()).orElse("mm"));
+
+		outerDSec.getEditor().setText(product.getProductDetail().getOutSecDiameter());
+		outerSecM.getSelectionModel().select(Optional.ofNullable(product.getProductDetail().getOuterSecMeasurement()).orElse("mm"));
+
+		contains.getEditor().setText(product.getProductDetail().getContains());
+		thread.getEditor().setText(product.getProductDetail().getThread());
+		note.setText(product.getProductDetail().getNote());
+		List<ProductImage> productImages = productImageRepository.findByProductSakuraNo(product.getSakuraNo());
+		filePath = productImages.stream()
+				.map(x -> new File(x.getImageUrl()))
+				.collect(Collectors.toList());
+		refreshImage();
+	}
+
 	private ImageView getAddButtonView(){
 		Image img = new Image("add.png");
 		ImageView view = new ImageView(img);
@@ -220,6 +263,7 @@ public class ProductAddController {
 			typeDetails.setItems(FXCollections.emptyObservableList());
 		}else {
 			typeDetails.setItems(FXCollections.observableList(typeDetailRepository.findByFilterId(selectedFilter.getId())));
+			typeDetails.getSelectionModel().select(0);
 		}
 	}
 
@@ -231,6 +275,33 @@ public class ProductAddController {
 	//TODO: alert error (if possible)
 
 	@FXML
+	public void processProduct(ActionEvent event){
+		if(isUpdate){
+			updateProduct(event);
+		}else{
+			addProduct(event);
+		}
+	}
+
+	private void updateProduct(ActionEvent event) {
+
+		Product productModal = composeAddProductModal();
+
+		if(dataValidator.validateUpdateProduct(productModal)){
+			ProductDetail productDetailSaved = productDetailRepository.save(productModal.getProductDetail());
+			productModal.setProductDetail(productDetailSaved);
+			productModal = productRepository.save(productModal);
+//			saveProductImage(productModal);
+			if(productModal != null){
+				AlertUtil.showInfo(sakuraId.getText()+ " Updated Successfully");
+				exit();
+			}
+		}else{
+			AlertUtil.showError("Invalid Data");
+		}
+
+	}
+
 	void addProduct(ActionEvent event) {
 		Product productModal = composeAddProductModal();
 		if(dataValidator.validateAddProduct(productModal)){
@@ -255,12 +326,22 @@ public class ProductAddController {
 		height.getEditor().setText("");
 		innerD.getEditor().setText("");
 		outerD.getEditor().setText("");
+		innerDSec.getEditor().setText("");
+		outerDSec.getEditor().setText("");
 		contains.getEditor().setText("");
 		heightM.getSelectionModel().selectFirst();
 		innerM.getSelectionModel().selectFirst();
 		outerM.getSelectionModel().selectFirst();
+		outerSecM.getSelectionModel().selectFirst();
+		innerSecM.getSelectionModel().selectFirst();
 		thread.getEditor().setText("");
 		note.setText("");
+		filePath = new ArrayList<>();
+		try {
+			refreshImage();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 
 	}
 	private void saveProductImage(Product product) {
@@ -276,12 +357,16 @@ public class ProductAddController {
 
 	private Product composeAddProductModal(){
 		Product product = new Product();
+		ProductDetail productDetail = new ProductDetail();
+		if(isUpdate){
+			product = productRepository.findBySakuraNoAndActive(sakuraId.getText(),0);
+			productDetail = product.getProductDetail();
+		}
 		product.setSakuraNo(sakuraId.getText());
 		product.setRefrenceNo(refId.getText());
 		product.setTypeDetail(typeDetails.getSelectionModel().getSelectedItem());
 		product.setManufacturer(manufacturer.getSelectionModel().getSelectedItem());
 		product.setFilter(filterType.getSelectionModel().getSelectedItem());
-		ProductDetail productDetail = new ProductDetail();
 		productDetail.setSakuraNo(sakuraId.getText());
 		productDetail.setHeight(height.getEditor().getText());
 		productDetail.setOutDiameter(outerD.getEditor().getText());
@@ -306,6 +391,16 @@ public class ProductAddController {
 		List<File> tempFilePath = fileChooser.showOpenMultipleDialog(((Node) event.getSource()).getScene().getWindow());
 		tempFilePath.forEach(file -> filePath.add(file));
 
+		for(File file : filePath) {
+			Image image = new Image(new FileInputStream(file));
+			ImageView view = new ImageView(image);
+			view.setPreserveRatio(true);
+			view.setFitWidth(imagePanel.getWidth());
+			view.setFitHeight(171);
+			imagePanel.getChildren().add(view);
+		}
+	}
+	private void refreshImage() throws FileNotFoundException {
 		for(File file : filePath) {
 			Image image = new Image(new FileInputStream(file));
 			ImageView view = new ImageView(image);

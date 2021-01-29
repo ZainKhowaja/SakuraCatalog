@@ -6,5 +6,6 @@ import com.app.sakura.entity.Product;
 public interface DataValidator{
 
     boolean validateAddProduct(Product product);
+    boolean validateUpdateProduct(Product product);
     boolean validateGenericAdd(String fieldData, AddGenericeController.AddWindowType windowType, Filter selectedItem, Integer filterId);
 }

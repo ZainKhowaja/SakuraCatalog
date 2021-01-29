@@ -30,7 +30,20 @@ public class DataValidatorImpl implements DataValidator {
         boolean isValidated = true;
         if (product.getSakuraNo() == null || product.getSakuraNo().isEmpty()) {
             isValidated = false;
-        } else if (productRepository.findById(product.getSakuraNo()).isPresent()) {
+        } else if (productRepository.findBySakuraNoAndActive(product.getSakuraNo(),0) != null) {
+            isValidated = false;
+        } else if (product.getProductDetail() == null) {
+            isValidated = false;
+        } else if (product.getFilter() == null || product.getManufacturer() == null || product.getTypeDetail() == null) {
+            isValidated = false;
+        }
+        return isValidated;
+    }
+
+    @Override
+    public boolean validateUpdateProduct(Product product) {
+        boolean isValidated = true;
+        if (product.getSakuraNo() == null || product.getSakuraNo().isEmpty()) {
             isValidated = false;
         } else if (product.getProductDetail() == null) {
             isValidated = false;

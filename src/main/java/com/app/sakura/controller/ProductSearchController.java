@@ -21,6 +21,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -424,5 +425,14 @@ public class ProductSearchController {
         } else {
             AlertUtil.showError("Select any item to update");
         }
+    }
+
+    @FXML
+    void hover(MouseEvent event) {
+        Label btn = (Label) event.getSource();
+        if (event.getEventType() == MouseEvent.MOUSE_ENTERED)
+            btn.setStyle("-fx-border-color: black; -fx-border-width: 2; -fx-background-color: #e0e0e0;");
+        else if (event.getEventType() == MouseEvent.MOUSE_EXITED)
+            btn.setStyle("-fx-border-color: black; -fx-border-width: 2; -fx-background-color: white;");
     }
 }

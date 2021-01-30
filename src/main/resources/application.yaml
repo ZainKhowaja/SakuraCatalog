@@ -16,6 +16,8 @@ config:
   phone: 03322620831
   alert: false
 
+# JASYPT_ENCRYPTOR_PASSWORD=rahim123
+
 #jasypt:
 #  encryptor:
 #    password: rahim123
@@ -27,5 +29,6 @@ mailjet:
   apiKey: 6029fe5c65913ed9995048b29868428d
   apiSecret: 43d336cb7207d083074a240da925ef13
 
+# if true add APP_SAKURA= AE2B1FCA515949E5D54FB22B8ED95575 (env variable)
 app:
   auth: false

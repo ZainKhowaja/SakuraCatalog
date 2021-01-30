@@ -17,6 +17,9 @@ public class Filter {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "active")
+    private Boolean active = true;
+    
     public Filter() {
     }
 
@@ -45,4 +48,14 @@ public class Filter {
     public String toString() {
         return this.getName();
     }
+
+	public Boolean getActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
+    
+    
 }

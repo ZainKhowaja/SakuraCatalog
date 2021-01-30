@@ -52,4 +52,11 @@ public class ProductReference {
     public void setProduct(Product product) {
         this.product = product;
     }
+    
+    public static void main(String[] args) {
+		String data = "ds.java";
+		
+		String[] a = data.split("\\.");
+		System.out.println(a[1]);
+	}
 }

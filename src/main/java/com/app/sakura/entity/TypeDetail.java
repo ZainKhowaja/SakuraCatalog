@@ -19,6 +19,17 @@ public class TypeDetail {
     @JoinColumn(name = "filter_id")
     private Filter filter;
 
+    @Column(name = "active")
+    private Boolean active = true;
+    
+    public Boolean getActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
+    
     public TypeDetail() {
     }
 

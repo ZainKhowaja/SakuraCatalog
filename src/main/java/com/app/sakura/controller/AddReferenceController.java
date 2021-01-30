@@ -87,6 +87,6 @@ public class AddReferenceController {
     }
 
     public void loadBrand(){
-        brandType.setItems(FXCollections.observableList(manufacturerRepository.findAll()));
+        brandType.setItems(FXCollections.observableList(manufacturerRepository.findByActiveTrue()));
     }
 }

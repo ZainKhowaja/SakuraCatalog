@@ -12,6 +12,17 @@ public class Manufacturer {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "active")
+    private Boolean active = true;
+    
+    public Boolean getActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
+    
     public Manufacturer() {
     }
 

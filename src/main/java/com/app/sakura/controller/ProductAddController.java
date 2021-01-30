@@ -12,6 +12,7 @@ import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import com.app.sakura.controller.AddGenericeController.AddWindowType;
 import com.app.sakura.entity.*;
 import com.app.sakura.enums.SakuraScreen;
 import com.app.sakura.repository.*;
@@ -126,11 +127,19 @@ public class ProductAddController {
 	private Label addFilter;
 
 	@FXML
+	private Label delFilter;
+
+	@FXML
 	private Label addMan;
+
+	@FXML
+	private Label delMan;
 
 	@FXML
 	private Label addType;
 
+	@FXML
+	private Label delType;
 
 	private FileChooser fileChooser = new FileChooser();
 
@@ -221,11 +230,23 @@ public class ProductAddController {
 		view.setPreserveRatio(true);
 		return view;
 	}
+
+	private ImageView getDeleteButtonView(){
+		Image img = new Image("del.png");
+		ImageView view = new ImageView(img);
+		view.setFitHeight(20);
+		view.setPreserveRatio(true);
+		return view;
+	}
+
 	private void loadAddButton() {
 		ImageView view = getAddButtonView();
 		addFilter.setGraphic(view);
 		addMan.setGraphic(getAddButtonView());
 		addType.setGraphic(getAddButtonView());
+		delType.setGraphic(getDeleteButtonView());
+		delMan.setGraphic(getDeleteButtonView());
+		delFilter.setGraphic(getDeleteButtonView());
 	}
 
 	@FXML
@@ -250,10 +271,11 @@ public class ProductAddController {
 	private void openAddWindow(AddGenericeController.AddWindowType windowType) {
 		AddGenericeController.windowType = windowType;
 		screen.switchScreen(addFilter, SakuraScreen.ADD_GENERIC_WINDOW, true);
+		AddGenericeController.deleteData = false;
 	}
 
 	private void loadManfacturers() {
-		manufacturer.setItems(FXCollections.observableList(manufacturerRepository.findAll()));
+		manufacturer.setItems(FXCollections.observableList(manufacturerRepository.findByActiveTrue()));
 	}
 
 	@FXML
@@ -262,13 +284,13 @@ public class ProductAddController {
 		if(selectedFilter == null){
 			typeDetails.setItems(FXCollections.emptyObservableList());
 		}else {
-			typeDetails.setItems(FXCollections.observableList(typeDetailRepository.findByFilterId(selectedFilter.getId())));
+			typeDetails.setItems(FXCollections.observableList(typeDetailRepository.findByFilterIdAndActiveTrue(selectedFilter.getId())));
 			typeDetails.getSelectionModel().select(0);
 		}
 	}
 
 	private void loadFilterType() {
-		filterType.setItems(FXCollections.observableList(filterRepository.findAll()));
+		filterType.setItems(FXCollections.observableList(filterRepository.findByActiveTrue()));
 	}
 	//TODO: add primary application field
 	//TODO: clear screen after adding
@@ -409,5 +431,30 @@ public class ProductAddController {
 			view.setFitHeight(171);
 			imagePanel.getChildren().add(view);
 		}
+	}
+
+	@FXML
+	public void deleteData(MouseEvent mouse){
+		System.out.println(( (Label) mouse.getSource()).getAccessibleText());
+
+		String selectedDel = ( (Label) mouse.getSource()).getAccessibleText();
+		AddWindowType window = null;
+		AddGenericeController.deleteData = true;
+
+		if(selectedDel.equals("delType")) {
+			window = AddWindowType.DEL_TYPE_DETAIL;
+			openAddWindow(window);
+			loadTypeDetails();
+		} else if(selectedDel.equals("delBrand")) {
+			window = AddWindowType.DEL_MANUFACTURER;
+			openAddWindow(window);
+			loadManfacturers();
+		}  else if(selectedDel.equals("delFilter")) {
+			window = AddWindowType.DEL_FILTER;
+			openAddWindow(window);
+			loadFilterType();
+		}
+
+
 	}
 }

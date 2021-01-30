@@ -420,6 +420,7 @@ public class ProductSearchController {
             ProductAddController.isUpdate = false;
             ProductAddController.product = null;
             updateTable();
+            refreshData();
 
 
         } else {
@@ -434,5 +435,22 @@ public class ProductSearchController {
             btn.setStyle("-fx-border-color: black; -fx-border-width: 2; -fx-background-color: #e0e0e0;");
         else if (event.getEventType() == MouseEvent.MOUSE_EXITED)
             btn.setStyle("-fx-border-color: black; -fx-border-width: 2; -fx-background-color: white;");
+    }
+
+    public void refreshData(){
+        sakuraNumber.setText("");
+        brand.setText("");
+        filterType.setText("");
+        typeDetail.setText("");
+        thread.setText("");
+        height.setText("");
+        outer.setText("");
+        innerDiameter.setText("");
+        outerDSec.setText("");
+        innerDSec.setText("");
+        containPeices.setText("");
+        note.setText("");
+        imagePanel.getChildren().clear();
+        refTableView.setItems(FXCollections.emptyObservableList());
     }
 }

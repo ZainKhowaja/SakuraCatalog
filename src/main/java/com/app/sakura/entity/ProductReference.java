@@ -21,7 +21,17 @@ public class ProductReference {
     @JoinColumn(name = "sakura_no")
     private Product product;
 
-    public Integer getId() {
+    private Boolean active = true;
+    
+    public Boolean getActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
+
+	public Integer getId() {
         return id;
     }
 

@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<ScrollPane minHeight="500.0" prefHeight="768.0" prefWidth="1255.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.sakura.controller.ProductSearchController">
+<ScrollPane minHeight="500.0" prefHeight="768.0" prefWidth="1255.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.sakura.controller.ProductSearchController">
    <content>
       <BorderPane prefHeight="768.0" prefWidth="1244.0">
          <top>
@@ -17,7 +28,7 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="387.0" layoutY="99.0" onMouseClicked="#addReference"  onMouseEntered="#hover" onMouseExited="#hover" prefHeight="33.0" prefWidth="113.0" style="-fx-border-color: black; -fx-border-width: 2;" text="Add Reference">
+                  <Label alignment="CENTER" layoutX="387.0" layoutY="99.0" onMouseClicked="#addReference" onMouseEntered="#hover" onMouseExited="#hover" prefHeight="33.0" prefWidth="113.0" style="-fx-border-color: black; -fx-border-width: 2;" text="Add Reference">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -196,7 +207,7 @@
                         <TableColumn fx:id="columnFour" minWidth="0.0" prefWidth="176.5" text="Primary Application" />
                     </columns>
                   </TableView>
-                  <TableView fx:id="refTableView" layoutX="25.0" layoutY="486.0" prefHeight="244.0" prefWidth="714.0">
+                  <TableView fx:id="refTableView" layoutX="25.0" layoutY="486.0" prefHeight="202.0" prefWidth="714.0">
                      <columns>
                         <TableColumn fx:id="refColumnOne" prefWidth="335.20002365112305" text="Reference #" />
                         <TableColumn fx:id="refColumnTwo" prefWidth="378.3999328613281" text="Manufacturer" />
@@ -211,6 +222,14 @@
                      </font>
                   </Label>
                   <Label alignment="CENTER" layoutX="288.0" layoutY="99.0" onMouseClicked="#updateProduct" onMouseEntered="#hover" onMouseExited="#hover" prefHeight="33.0" prefWidth="91.0" style="-fx-border-color: black; -fx-border-width: 2;" text="Update">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="25.0" layoutY="696.0" onMouseClicked="#delRef" onMouseEntered="#hover" onMouseExited="#hover" prefHeight="34.0" prefWidth="712.0" style="-fx-border-color: black; -fx-border-width: 2;" text="Delete Reference">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>

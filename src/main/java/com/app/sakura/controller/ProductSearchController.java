@@ -275,7 +275,7 @@ public class ProductSearchController {
 
         ObservableList<SearchProduct> allRef = FXCollections.observableArrayList();
 
-        productReferenceRepository.findByProduct_sakuraNo(sakuraId).forEach(ref -> {
+        productReferenceRepository.findByProduct_sakuraNoAndActiveTrue(sakuraId).forEach(ref -> {
             SearchProduct row = new SearchProduct();
             row.setColumnOne(ref.getReference());
             row.setColumnTwo(ref.getManufacturer().getName());
@@ -331,6 +331,23 @@ public class ProductSearchController {
         }
     }
 
+    @FXML
+    public void delRef() {
+    	SearchProduct selectedItem = refTableView.getSelectionModel().getSelectedItem();
+    	if(selectedItem == null) {
+    		 AlertUtil.showError("Select any item to delete");
+    	}else {
+    		ProductReference ref = productReferenceRepository.findFirstByReferenceAndManufacturer_name(selectedItem.getColumnOne(), selectedItem.getColumnTwo());
+    		ref.setActive(false);
+    		productReferenceRepository.save(ref);
+    		
+    		SearchProduct mainSelection = tableView.getSelectionModel().getSelectedItem();
+    		
+    		String sakuraId = isReferenceSelected() ? mainSelection.getColumnThree() : mainSelection.getColumnOne();
+    		loadReference(sakuraId);
+    	}
+    }
+    
     public void addBrand() {
         screen.switchScreen(refTableView, SakuraScreen.ADD_BRAND, true);
     }
@@ -346,7 +363,7 @@ public class ProductSearchController {
             HashMap<String, String> reference = new HashMap<String, String>();
 
             productReferenceRepository
-                    .findByProduct_sakuraNo(sakuraId)
+                    .findByProduct_sakuraNoAndActiveTrue(sakuraId)
                     .forEach(product -> reference.put(product.getReference(), product.getManufacturer().getName()));
 
             String imageUrl = "";

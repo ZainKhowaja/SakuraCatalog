@@ -83,7 +83,7 @@ public class DataValidatorImpl implements DataValidator {
                 return manufacturerRepository.findAll().stream().filter(x -> x.getName().equalsIgnoreCase(fieldData)).count() == 0;
             case TYPE_DETAIL:
                 return typeDetailRepository.findAll().stream()
-                        .filter(x -> x.getId() == filterId)
+                        .filter(x -> x.getFilter().getId() == filterId)
                         .filter(x -> x.getName().equalsIgnoreCase(fieldData)).count() == 0;
         }
         return false;

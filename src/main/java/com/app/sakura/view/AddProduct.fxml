@@ -1,21 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
-<?import javafx.collections.FXCollections?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.Spinner?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="windowPane" minHeight="0.0" minWidth="0.0" prefHeight="502.0" prefWidth="1249.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.sakura.controller.ProductAddController">
+<AnchorPane fx:id="windowPane" minHeight="0.0" minWidth="0.0" prefHeight="502.0" prefWidth="1249.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.sakura.controller.ProductAddController">
    <children>
       <GridPane layoutX="37.0" layoutY="85.0" prefHeight="320.0" prefWidth="362.0">
          <columnConstraints>
@@ -92,10 +83,10 @@
             <Spinner fx:id="contains" editable="true" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <Spinner fx:id="outerD" editable="true" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField fx:id="note" prefHeight="30.0" prefWidth="185.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-            <Label alignment="BOTTOM_LEFT" prefHeight="33.0" prefWidth="118.0" text="Outer D Secondary" GridPane.rowIndex="3" />
+            <Label alignment="BOTTOM_LEFT" prefHeight="33.0" prefWidth="118.0" text="Outer D 2" GridPane.rowIndex="3" />
             <Spinner fx:id="outerDSec" editable="true" prefHeight="28.0" prefWidth="185.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Spinner fx:id="innerDSec" editable="true" prefHeight="29.0" prefWidth="185.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Label alignment="BOTTOM_LEFT" prefHeight="37.0" prefWidth="118.0" text="Inner D Secondary" GridPane.rowIndex="4" />
+            <Label alignment="BOTTOM_LEFT" prefHeight="37.0" prefWidth="118.0" text="Inner D 2" GridPane.rowIndex="4" />
             <ComboBox fx:id="heightM" prefHeight="26.0" prefWidth="73.0" value="mm" GridPane.columnIndex="2">
                <items>
                   <FXCollections fx:factory="observableArrayList">

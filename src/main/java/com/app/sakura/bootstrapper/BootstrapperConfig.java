@@ -45,20 +45,20 @@ public class BootstrapperConfig {
 
         final Filter filter = filterRepository.findByName(getFilterName()[0]);
         List<TypeDetail> typeDetails = Arrays.asList(typeDetails1).stream()
-                .map(x -> new TypeDetail(x,filter))
+                .map(x -> new TypeDetail(x.toUpperCase(),filter))
                 .collect(Collectors.toList());
 
         typeDetailRepository.saveAll(typeDetails);
 
         final Filter filter2 = filterRepository.findByName(getFilterName()[1]);
         typeDetails = Arrays.asList(typeDetails2).stream()
-                .map(x -> new TypeDetail(x,filter2))
+                .map(x -> new TypeDetail(x.toUpperCase(),filter2))
                 .collect(Collectors.toList());
         typeDetailRepository.saveAll(typeDetails);
 
         final Filter filter3 = filterRepository.findByName(getFilterName()[2]);
         typeDetails = Arrays.asList(typeDetails3).stream()
-                .map(x -> new TypeDetail(x,filter3))
+                .map(x -> new TypeDetail(x.toUpperCase(),filter3))
                 .collect(Collectors.toList());
 
         typeDetailRepository.saveAll(typeDetails);

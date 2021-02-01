@@ -109,7 +109,7 @@ public class AddGenericeController {
 
     @FXML
     public void addData() {
-        String filedData = textValue.getText().trim();
+        String filedData = textValue.getText().trim().toUpperCase();
         Integer filterId = null;
         
         Filter selectedFilter = null;

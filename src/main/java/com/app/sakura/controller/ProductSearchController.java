@@ -178,7 +178,7 @@ public class ProductSearchController {
 //		response.add(product1);
 //		response.add(product2);
         if (isReferenceSelected()) {
-            for (ProductReference product : productReferenceRepository.findByProductActive(0)) {
+            for (ProductReference product : productReferenceRepository.findByProductActiveAndActiveTrue(0)) {
                 SearchProduct searchProduct = new SearchProduct();
 
                 searchProduct.setColumnOne(product.getReference());

@@ -54,6 +54,17 @@ public class ProductDetail implements Serializable {
     @Column(name = "note")
     private String note;
 
+    @Column(name = "drain")
+    private String drain;
+
+    public String getDrain() {
+        return drain;
+    }
+
+    public void setDrain(String drain) {
+        this.drain = drain;
+    }
+
     public Integer getId() {
         return id;
     }

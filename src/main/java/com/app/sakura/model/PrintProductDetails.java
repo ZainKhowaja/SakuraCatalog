@@ -16,6 +16,7 @@ public class PrintProductDetails {
     private String packagingPerCaton;
     private String thread;
     private String note;
+    private String drain;
     private String imageName;
     private HashMap<String,String> reference;
 
@@ -32,6 +33,7 @@ public class PrintProductDetails {
         this.packagingPerCaton = builder.packagingPerCaton;
         this.thread = builder.thread;
         this.note = builder.note;
+        this.drain = builder.drain;
         this.imageName = builder.imageName;
         this.reference = builder.reference;
     }
@@ -88,11 +90,16 @@ public class PrintProductDetails {
         return imageName;
     }
 
+    public String getDrain() {
+        return drain;
+    }
+
     public HashMap<String, String> getReference() {
         return reference;
     }
 
     public static class PrintProductDetailsBuilder {
+        private String drain;
         private String imageName;
         private String fujiNo;
         private String filter;
@@ -114,6 +121,11 @@ public class PrintProductDetails {
 
         public static PrintProductDetailsBuilder newBuilder(){
             return new PrintProductDetailsBuilder();
+        }
+
+        public PrintProductDetailsBuilder setDrain(String drain) {
+            this.drain = drain;
+            return this;
         }
 
         public PrintProductDetailsBuilder setImageName(String imageName) {

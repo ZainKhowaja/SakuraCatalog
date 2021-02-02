@@ -59,6 +59,8 @@ public class ProductSearchController {
     @FXML
     private Label note;
     @FXML
+    private Label drainNut;
+    @FXML
     private Label containPeices;
     @FXML
     private Label innerDiameter;
@@ -250,6 +252,7 @@ public class ProductSearchController {
 
         containPeices.setText(product.getProductDetail().getContains());
         note.setText(product.getProductDetail().getNote());
+        drainNut.setText(product.getProductDetail().getDrain());
 
         imagePanel.getChildren().clear();
         List<ProductImage> images = productImageRepository.findByProductSakuraNo(sakuraId);
@@ -389,7 +392,8 @@ public class ProductSearchController {
                     .setReference(reference)
                     .setThread(product.getProductDetail().getThread())
                     .setTypeDetail(product.getTypeDetail().getName())
-                    .setImageName(imageUrl);
+                    .setImageName(imageUrl)
+                    .setDrain(product.getProductDetail().getDrain());
 
             try {
                 printerService.printProductDetails(builder.build());
@@ -467,6 +471,7 @@ public class ProductSearchController {
         innerDSec.setText("");
         containPeices.setText("");
         note.setText("");
+        drainNut.setText("");
         imagePanel.getChildren().clear();
         refTableView.setItems(FXCollections.emptyObservableList());
     }

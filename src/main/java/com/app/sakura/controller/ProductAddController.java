@@ -107,6 +107,9 @@ public class ProductAddController {
 	private Spinner<Double> outerDSec;
 
 	@FXML
+	private CheckBox drain;
+
+	@FXML
 	private TextField note;
 
 	@FXML
@@ -442,6 +445,7 @@ public class ProductAddController {
 		productDetail.setInnerMeasurement(innerM.getSelectionModel().getSelectedItem());
 		productDetail.setOuterSecMeasurement(outerSecM.getSelectionModel().getSelectedItem());
 		productDetail.setInnerSecMeasurement(innerSecM.getSelectionModel().getSelectedItem());
+		productDetail.setDrain(drain.isSelected() ? "YES" : "NO");
 		productDetail.setNote(note.getText());
 
 		product.setProductDetail(productDetail);

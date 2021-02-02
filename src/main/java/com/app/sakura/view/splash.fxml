@@ -12,20 +12,25 @@
             <Image url="/splash3.gif" />
          </image>
       </ImageView>
-      <Label alignment="CENTER" layoutX="230.0" layoutY="239.0" prefHeight="46.0" prefWidth="110.0" text="F U J I " textFill="#f72e0f">
+      <Label alignment="CENTER" layoutX="276.0" layoutY="63.0" prefHeight="46.0" prefWidth="110.0" text="F U J I " textFill="#f72e0f">
          <font>
             <Font name="System Bold" size="31.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="184.0" layoutY="270.0" prefHeight="46.0" prefWidth="204.0" text="A P P L I C A T I O N">
+      <Label alignment="CENTER" layoutX="268.0" layoutY="94.0" prefHeight="46.0" prefWidth="166.0" text="A P P L I C A T I O N">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="loading" alignment="CENTER" layoutX="193.0" layoutY="67.0" prefHeight="46.0" prefWidth="204.0" text="L O A D I N G . . " textFill="#681907">
+      <Label fx:id="loading" alignment="CENTER" layoutX="203.0" layoutY="315.0" prefHeight="46.0" prefWidth="204.0" text="L O A D I N G . . " textFill="#681907">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
+      <ImageView fitHeight="73.0" fitWidth="89.0" layoutX="179.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="/fuji-icon.jpg" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

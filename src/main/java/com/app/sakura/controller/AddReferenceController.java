@@ -10,8 +10,10 @@ import com.app.sakura.repository.ProductReferenceRepository;
 import com.app.sakura.repository.ProductRepository;
 import com.app.sakura.service.DataValidator;
 import com.app.sakura.util.AlertUtil;
+import com.app.sakura.util.ComboBoxUtil;
 import com.app.sakura.util.ScreenUtils;
 import javafx.collections.FXCollections;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -21,6 +23,8 @@ import javafx.stage.Stage;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 public class AddReferenceController {
@@ -48,6 +52,8 @@ public class AddReferenceController {
 
     @FXML
     private TextField refNo;
+
+    private List<Manufacturer> manufacturerList;
 
     @FXML
     public void initialize(){
@@ -87,6 +93,14 @@ public class AddReferenceController {
     }
 
     public void loadBrand(){
-        brandType.setItems(FXCollections.observableList(manufacturerRepository.findByActiveTrue()));
+        manufacturerList = manufacturerRepository.findByActiveTrue();
+        FilteredList<Manufacturer> filteredList = FXCollections.observableList(manufacturerList).filtered(x->true);
+        brandType.setItems(FXCollections.observableList(ComboBoxUtil.addSupportForSearch(brandType,filteredList)));
     }
+
+    @FXML
+    public void reload(){
+        brandType.setItems(FXCollections.observableList(manufacturerList));
+    }
+
 }

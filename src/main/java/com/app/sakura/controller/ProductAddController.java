@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import com.app.sakura.controller.AddGenericeController.AddWindowType;
 import com.app.sakura.entity.*;
@@ -18,16 +17,26 @@ import com.app.sakura.enums.SakuraScreen;
 import com.app.sakura.repository.*;
 import com.app.sakura.service.DataValidator;
 import com.app.sakura.util.AlertUtil;
+import com.app.sakura.util.ComboBoxUtil;
 import com.app.sakura.util.FileUtil;
 import com.app.sakura.util.ScreenUtils;
+import com.sun.javafx.scene.control.skin.ComboBoxListViewSkin;
+import javafx.application.Platform;
+import javafx.beans.Observable;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.Event;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Component;
 
 import javafx.event.ActionEvent;
@@ -40,7 +49,9 @@ import javafx.stage.FileChooser;
 
 @Component
 public class ProductAddController {
-
+	private List<Manufacturer> manufacturerList;
+	private List<Filter> filterList;
+	private List<TypeDetail> typeDetailList;
 	public static boolean isUpdate;
 	public static Product product;
 
@@ -274,8 +285,30 @@ public class ProductAddController {
 		AddGenericeController.deleteData = false;
 	}
 
+	@FXML
+	private void reload(MouseEvent event){
+		ComboBox box = (ComboBox) event.getSource();
+		Object obj = box.getSelectionModel().getSelectedItem();
+		if(obj instanceof Manufacturer) {
+			manufacturer.setItems(FXCollections.observableList(manufacturerList));
+		}else if(obj instanceof Filter) {
+			filterType.setItems(FXCollections.observableList(filterList));
+		}else if(obj instanceof TypeDetail) {
+			Filter selectedFilter = filterType.getSelectionModel().getSelectedItem();
+			if(selectedFilter == null){
+				typeDetails.setItems(FXCollections.emptyObservableList());
+			}else {
+				FilteredList<TypeDetail> typeDetailsList = FXCollections.observableList(typeDetailList.stream()
+						.filter(x -> x.getFilter().getId() == selectedFilter.getId())
+						.collect(Collectors.toList()))
+						.filtered(x -> true);
+				typeDetails.setItems(FXCollections.observableList(typeDetailList.stream().filter(x -> x.getFilter().getId() == selectedFilter.getId()).collect(Collectors.toList())));
+			}
+		}
+	}
 	private void loadManfacturers() {
-		manufacturer.setItems(FXCollections.observableList(manufacturerRepository.findByActiveTrue()));
+		manufacturerList = manufacturerRepository.findByActiveTrue();
+		manufacturer.setItems(FXCollections.observableList(ComboBoxUtil.addSupportForSearch(manufacturer,FXCollections.observableList(manufacturerList).filtered(x->true))));
 	}
 
 	@FXML
@@ -284,13 +317,20 @@ public class ProductAddController {
 		if(selectedFilter == null){
 			typeDetails.setItems(FXCollections.emptyObservableList());
 		}else {
-			typeDetails.setItems(FXCollections.observableList(typeDetailRepository.findByFilterIdAndActiveTrue(selectedFilter.getId())));
+			typeDetailList = typeDetailRepository.findByActiveTrue();
+			FilteredList<TypeDetail> typeDetailsList = FXCollections.observableList(typeDetailList.stream()
+					.filter(x-> x.getFilter().getId() == selectedFilter.getId())
+					.collect(Collectors.toList()))
+					.filtered(x->true);
+			typeDetails.setItems(ComboBoxUtil.addSupportForSearch(typeDetails,typeDetailsList));
 			typeDetails.getSelectionModel().select(0);
 		}
 	}
 
 	private void loadFilterType() {
-		filterType.setItems(FXCollections.observableList(filterRepository.findByActiveTrue()));
+		filterList = filterRepository.findByActiveTrue();
+		FilteredList<Filter> filterFilteredList = FXCollections.observableList(filterList).filtered(x->true);
+		filterType.setItems(FXCollections.observableList(ComboBoxUtil.addSupportForSearch(filterType,filterFilteredList)));
 	}
 	//TODO: add primary application field
 	//TODO: clear screen after adding
@@ -454,7 +494,8 @@ public class ProductAddController {
 			openAddWindow(window);
 			loadFilterType();
 		}
-
-
 	}
+
+
+
 }

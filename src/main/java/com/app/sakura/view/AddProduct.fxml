@@ -29,11 +29,11 @@
             <Label alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="100.0" text="Reference Id" visible="false" GridPane.rowIndex="5" />
             <TextField fx:id="refId" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <Label alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="100.0" text="Filter Type" GridPane.rowIndex="1" />
-            <ComboBox fx:id="filterType" maxWidth="1.7976931348623157E308" onAction="#loadTypeDetails" prefHeight="12.0" prefWidth="200.0" promptText="Select Filter" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ComboBox fx:id="filterType" maxWidth="1.7976931348623157E308" onAction="#loadTypeDetails" onMouseClicked="#reload" prefHeight="12.0" prefWidth="200.0" promptText="Select Filter" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="100.0" text="Brand" GridPane.rowIndex="2" />
-            <ComboBox fx:id="manufacturer" maxWidth="1.7976931348623157E308" prefHeight="12.0" prefWidth="200.0" promptText="Select Brand" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ComboBox fx:id="manufacturer" maxWidth="1.7976931348623157E308" onMouseClicked="#reload" prefHeight="12.0" prefWidth="200.0" promptText="Select Brand" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="100.0" text="Type Details" GridPane.rowIndex="3" />
-            <ComboBox fx:id="typeDetails" maxWidth="1.7976931348623157E308" prefHeight="12.0" prefWidth="200.0" promptText="Select Type" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ComboBox fx:id="typeDetails" maxWidth="1.7976931348623157E308" onMouseClicked="#reload" prefHeight="12.0" prefWidth="200.0" promptText="Select Type" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Button fx:id="chooseImage" mnemonicParsing="false" onAction="#openImage" prefHeight="26.0" prefWidth="184.0" text="Choose Image" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="4" />
             <Button fx:id="addProduct" mnemonicParsing="false" onAction="#processProduct" prefHeight="26.0" prefWidth="98.0" text="Add Product" GridPane.halignment="LEFT" GridPane.rowIndex="4" />
             <Label fx:id="addFilter" onMouseClicked="#openAddFilter" prefHeight="37.0" prefWidth="37.0" styleClass="addBtn" GridPane.columnIndex="2" GridPane.rowIndex="1" />

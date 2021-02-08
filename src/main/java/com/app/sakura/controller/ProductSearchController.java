@@ -419,6 +419,7 @@ public class ProductSearchController {
                 productRepository.deleteProduct(sakuraNo);
                 AlertUtil.showInfo(String.format("%s deleted successfully", sakuraNo));
                 updateTable();
+                refreshData();
             }
 
         } else {

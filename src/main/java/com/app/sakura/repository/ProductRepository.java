@@ -20,7 +20,7 @@ public interface ProductRepository extends JpaRepository<Product,String> {
 
     @Transactional
     @Modifying
-    @Query(value = "update product set sakura_no = ?1 || '-DEL' , active = 1 where sakura_no = ?1" ,nativeQuery = true)
+    @Query(value = "update product set sakura_no = concat(?1,'-DEL')  , active = 1 where sakura_no = ?1" ,nativeQuery = true)
     void deleteProduct(String sakuraNo);
     Product findByRefrenceNo(String refrenceNo);
     

@@ -10,11 +10,15 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.scheduling.annotation.EnableScheduling;
+
+import javax.annotation.PostConstruct;
 
 @EnableScheduling
 @EnableEncryptableProperties
@@ -25,29 +29,31 @@ public class SakuraFilterApplication extends Application {
     private Parent rootNode;
     private double xOffset = 0;
     private double yOffset = 0;
+
     @Value("${app.auth:true}")
     public boolean enableAuth;
 
-    public static void main(String[] args) {
-
-        LauncherImpl.launchApplication(SakuraFilterApplication.class,SplashScreen.class,args);
-        if (new SakuraFilterApplication().appAuthentication()) {
-            launch(args);
-        }else{
-            System.out.println("APP NOT AUTHENTICATED");
+    private static final Logger logger = LoggerFactory.getLogger(SakuraFilterApplication.class);
+    @PostConstruct
+    public void authenticate(){
+        if (!appAuthentication()) {
+            logger.info("APP NOT AUTHENTICATED");
+            System.exit(-1);
         }
+        logger.info("AUTHENTICATED");
 
+    }
+    public static void main(String[] args) {
+        LauncherImpl.launchApplication(SakuraFilterApplication.class,SplashScreen.class,args);
         System.exit(-1);
     }
 
-    private boolean appAuthentication() {
+    public boolean appAuthentication() {
         String hash = System.getenv("APP_SAKURA");
-//        return hash == null ? true : hash.equalsIgnoreCase("AE2B1FCA515949E5D54FB22B8ED95575");
         if(enableAuth) {
             return hash.equalsIgnoreCase("AE2B1FCA515949E5D54FB22B8ED95575");
         }else{
             return true;
-//            return hash == null ? true : hash.equalsIgnoreCase("AE2B1FCA515949E5D54FB22B8ED95575");
         }
     }
 

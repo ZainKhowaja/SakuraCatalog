@@ -1,5 +1,6 @@
 package com.app.sakura.util;
 
+import com.app.sakura.config.AppConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.FileCopyUtils;
@@ -12,8 +13,6 @@ import java.nio.file.Paths;
 
 public class FileUtil {
     private static final Logger LOGGER = LoggerFactory.getLogger(FileUtil.class);
-    public static final String IMAGE_FOLDER_PATH = "/image/";
-
     public static void takeDailyFileBackup(String fileLocation) {
         try {
             String newFileName = DateUtil.getCurrentDateForDbBackup() + ".db";
@@ -38,15 +37,17 @@ public class FileUtil {
         }
     }
 
+
     public static String copyFile(String source) {
+        LOGGER.info("Image folder: {}", AppConfig.IMAGE_FOLDER_PATH);
         File sourceFile = new File(source);
-        File destFile = new File(System.getProperty("user.dir") + IMAGE_FOLDER_PATH + sourceFile.getName());
+        File destFile = new File(AppConfig.IMAGE_FOLDER_PATH + sourceFile.getName());
         if(!destFile.exists()){
-            new File(System.getProperty("user.dir") + IMAGE_FOLDER_PATH).mkdirs();
+            new File(AppConfig.IMAGE_FOLDER_PATH).mkdirs();
         }
         try {
             FileCopyUtils.copy(sourceFile, destFile);
-            System.out.println(destFile.getCanonicalPath().replaceAll("\\\\","/"));
+            LOGGER.info(destFile.getCanonicalPath().replaceAll("\\\\","/"));
             return destFile.getCanonicalPath().replaceAll("\\\\","/");
         } catch (IOException e) {
             e.printStackTrace();
@@ -58,7 +59,4 @@ public class FileUtil {
         return new File("stockapp.db").exists();
     }
 
-    public static void main(String[] args) {
-        FileUtil.copyFile("E:\\Program Files (x86)\\Sakura Filter\\img\\A-2524.jpg");
-    }
 }

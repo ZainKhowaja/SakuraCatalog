@@ -1,8 +1,10 @@
 package com.app.sakura.bootstrapper;
 
+import com.app.sakura.entity.AppConfig;
 import com.app.sakura.entity.Filter;
 import com.app.sakura.entity.Manufacturer;
 import com.app.sakura.entity.TypeDetail;
+import com.app.sakura.repository.AppConfigRepository;
 import com.app.sakura.repository.FilterRepository;
 import com.app.sakura.repository.ManufacturerRepository;
 import com.app.sakura.repository.TypeDetailRepository;
@@ -27,12 +29,18 @@ public class BootstrapperConfig {
     @Autowired
     private TypeDetailRepository typeDetailRepository;
 
+    @Autowired
+    private AppConfigRepository appConfigRepository;
+
     @PostConstruct
     public void fillData(){
-        if(!FileUtil.doesDbExists()) {
+        AppConfig appConfig = appConfigRepository.findAll().get(0);
+        if(!appConfig.isLoadDefaultData()) {
             loadDefaultFilterType();
             loadDefaultManufacturerType();
             loadTypeDetails();
+            appConfig.setLoadDefaultData(true);
+            appConfigRepository.save(appConfig);
         }
     }
 

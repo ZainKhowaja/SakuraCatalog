@@ -5,12 +5,12 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="440.0" prefWidth="589.0" style="-fx-background-color: #f5f5f5;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="440.0" prefWidth="589.0" style="-fx-background-color: #f5f5f5;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.sakura.controller.SplashController">
    <children>
-      <ImageView fitHeight="400.0" fitWidth="589.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="/splash3.gif" />
-         </image>
+      <ImageView fx:id="loader" fitHeight="400.0" fitWidth="589.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+<!--         <image>-->
+<!--            <Image url="file:/\\Newpserver\image\splash3.gif" />-->
+<!--         </image>-->
       </ImageView>
       <Label alignment="CENTER" layoutX="276.0" layoutY="63.0" prefHeight="46.0" prefWidth="110.0" text="F U J I " textFill="#f72e0f">
          <font>
@@ -27,9 +27,9 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <ImageView fitHeight="73.0" fitWidth="89.0" layoutX="179.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="logo" fitHeight="73.0" fitWidth="89.0" layoutX="179.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="/fuji-icon.jpg" />
+<!--            <Image url="file:/\\Newpserver\image\fuji-icon.jpg" />-->
          </image>
       </ImageView>
    </children>

@@ -5,9 +5,9 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
-    database-platform: com.app.sakura.config.SQLiteDialect
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
   datasource:
-    driver-class-name: org.sqlite.JDBC
+    driver-class-name: org.hibernate.dialect.MySQL5InnoDBDialect
 
 
 config:
@@ -16,19 +16,15 @@ config:
   phone: 03322620831
   alert: false
 
-# JASYPT_ENCRYPTOR_PASSWORD=rahim123
 
-#jasypt:
-#  encryptor:
-#    password: rahim123
+#test: ENC(SIfgXmiE8YiwgJ3mEswxAQ==)
+test: ENC(ZCQmOaZIvqCoqvJ3KqtHJ/w9Rum51tVd)
 
-test: ENC(QfqFgLDYoertMPuIpcXaRA==)
+
+scheduler:
+  enable-backup: false
 connect: @con.ver@
 
 mailjet:
   apiKey: 6029fe5c65913ed9995048b29868428d
   apiSecret: 43d336cb7207d083074a240da925ef13
-
-# if true add APP_SAKURA= AE2B1FCA515949E5D54FB22B8ED95575 (env variable)
-app:
-  auth: false

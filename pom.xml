@@ -17,7 +17,8 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <con.ver>int</con.ver>
+<!--        <con.ver>word</con.ver>-->
+        <con.ver>123</con.ver>
         <projectName>Fuji Filter Catalog</projectName>
     </properties>
 
@@ -68,10 +69,16 @@
             <version>4.2.0</version>
         </dependency>
         <dependency>
-            <groupId>io.github.willena</groupId>
-            <artifactId>sqlite-jdbc</artifactId>
-            <version>3.33.0.1</version>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
         </dependency>
+
+        <!--        <dependency>-->
+<!--            <groupId>io.github.willena</groupId>-->
+<!--            <artifactId>sqlite-jdbc</artifactId>-->
+<!--            <version>3.33.0.1</version>-->
+<!--        </dependency>-->
     </dependencies>
 
     <build>
@@ -105,6 +112,9 @@
                                 <windowTitle/>
                             </singleInstance>
                             <jre>
+<!--                                <opts>-->
+<!--                                    <opt>&#45;&#45;jasypt.encryptor.password=rahim123</opt>-->
+<!--                                </opts>-->
                                 <path>${java.home}</path>
                                 <bundledJre64Bit>true</bundledJre64Bit>
                                 <runtimeBits>64</runtimeBits>

@@ -11,6 +11,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
+import com.app.sakura.config.AppConfig;
 import com.app.sakura.controller.AddGenericeController.AddWindowType;
 import com.app.sakura.entity.*;
 import com.app.sakura.enums.SakuraScreen;
@@ -36,6 +37,8 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -49,6 +52,8 @@ import javafx.stage.FileChooser;
 
 @Component
 public class ProductAddController {
+	private static final Logger logger = LoggerFactory.getLogger(ProductAddController.class);
+
 	private List<Manufacturer> manufacturerList;
 	private List<Filter> filterList;
 	private List<TypeDetail> typeDetailList;
@@ -238,7 +243,9 @@ public class ProductAddController {
 	}
 
 	private ImageView getAddButtonView(){
-		Image img = new Image("add.png");
+
+		File file = new File(AppConfig.RESOURCE_PATH+"add.png");
+		Image img = new Image(file.toURI().toString());
 		ImageView view = new ImageView(img);
 		view.setFitHeight(20);
 		view.setPreserveRatio(true);
@@ -246,7 +253,8 @@ public class ProductAddController {
 	}
 
 	private ImageView getDeleteButtonView(){
-		Image img = new Image("del.png");
+		File file = new File(AppConfig.RESOURCE_PATH+"del.png");
+		Image img = new Image(file.toURI().toString());
 		ImageView view = new ImageView(img);
 		view.setFitHeight(20);
 		view.setPreserveRatio(true);
@@ -409,9 +417,12 @@ public class ProductAddController {
 		}
 
 	}
+
 	private void saveProductImage(Product product) {
+
 		if (filePath != null && filePath.size() > 0) {
 			for(File file : filePath) {
+				logger.info("File path :{}",file.getAbsolutePath());
 				ProductImage image = new ProductImage();
 				image.setImageUrl(FileUtil.copyFile(file.getAbsolutePath()));
 				image.setProduct(product);
@@ -455,7 +466,12 @@ public class ProductAddController {
 	void openImage(ActionEvent event) throws FileNotFoundException {
 		
 		List<File> tempFilePath = fileChooser.showOpenMultipleDialog(((Node) event.getSource()).getScene().getWindow());
-		tempFilePath.forEach(file -> filePath.add(file));
+		tempFilePath.forEach(file -> {
+			logger.info("Open Image :{}",file.getPath());
+			filePath.add(file);
+		});
+
+
 
 		for(File file : filePath) {
 			Image image = new Image(new FileInputStream(file));
